@@ -80,8 +80,9 @@ export const concepts = [
 ];
 
 // 画像アセット（public/images/kawakami/ 配下）
+// 注：cooperation_person_profile.png は Profile セクション専用。ここには含めない。
 export const images = {
-  hero:      '/images/kawakami/cooperation_person_profile.png', // 協力隊員・コミュニティ主役
+  hero:      '/images/kawakami/event.jpg',              // ヒーロー用の代表画像（イベント風景）
   cosmos:    '/images/kawakami/astro_event.jpg',        // 宇宙イベント
   idea:      '/images/kawakami/kawakami_idea.jpg',      // 村について考える会議
   meeting1:  '/images/kawakami/hybrid_meeting.jpg',
@@ -94,9 +95,9 @@ export const images = {
 };
 
 export const gallery = [
-  images.event1, images.event2, images.event3,
+  images.event2, images.event3,
   images.meeting1, images.meeting2, images.meeting3,
-  images.idea, images.cosmos, images.vicemayor, images.hero,
+  images.idea, images.cosmos, images.vicemayor,
 ];
 
 export const features = [
@@ -105,7 +106,7 @@ export const features = [
   { icon: '🏕️', title: '現地で体験する',       body: '活動費は全額、村のイベント・体験・宿泊・飲食へ。来るたびに発見がある。',          image: images.event1 },
   { icon: '🗓️', title: 'イベントを企画する',   body: '川上村に来るイベントをオプチャ内で企画・告知。やりたいを形にできる。',            image: images.event2 },
   { icon: '🤝', title: '村について考える会議', body: 'ハイブリッド形式で定期開催。村の未来を一緒に考える対話の場。',                  image: images.meeting1 },
-  { icon: '🛸', title: 'コアメンへの一歩',     body: '気が合えばDiscordへ。本気で村を盛り上げる仲間として活動できます。',              image: images.hero },
+  { icon: '🛸', title: 'コアメンへの一歩',     body: '気が合えばDiscordへ。本気で村を盛り上げる仲間として活動できます。',              image: images.meeting2 },
 ];
 
 export const news = [
