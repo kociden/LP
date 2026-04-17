@@ -19,10 +19,22 @@ export const community = {
   catchcopyAlt2: '川上村ファン、はじめませんか？',
   lead: '長野県川上村のDAOコミュニティ「レタスペビレッジ」。村のイベント・体験・人と出会いながら、関係人口の輪をひろげる場所です。',
   shortLead: '長野県川上村のDAOコミュニティ。関係人口を増やす仲間を募集中。',
-  lineUrl: '#',
+  lineUrl: 'https://line.me/ti/g2/jWXM52tVZ_ZYify-zXeJD99C4mVFy6cnpaSoYg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default',
   discordUrl: '#',
   instagramUrl: '#',
   threadsUrl: '#',
+};
+
+// 運営者プロフィール（素材到着後に写真・文章を差し替え）
+export const profile = {
+  handle: 'つっちー',
+  realName: '',                              // 差し替え予定
+  role: '川上村 地域おこし協力隊員',
+  org: 'レタスペビレッジ運営',
+  photo: '/images/kawakami/cooperation_person.png',
+  bio: 'レタスペビレッジの運営を担う川上村 地域おこし協力隊員。村内外をつなぎ、関係人口を増やす活動を日々発信しています。',
+  message: '「ちょっと気になる」くらいで、大丈夫。まずはLINEオープンチャットを覗いてみてください。川上村と、あなたの関わり方を、一緒に探していきましょう。',
+  tags: ['関係人口', 'DAOコミュニティ', '川上村', 'レタス・宇宙'],
 };
 
 export const numbers = [
@@ -107,9 +119,9 @@ export const news = [
     date: '2026.02.10',
     tag: 'press',
     tagLabel: 'プレスリリース',
-    title: '川上村副村長と面会、DAO活動についての意見交換を実施',
-    excerpt: '村内関係者との連携強化に向けた対話。「レタスペビレッジ」の今後の展開についても意見交換を行いました。',
-    href: '#',
+    title: '川上村DAO「レタスペビレッジ」についての記事がPR TIMESに掲載されました',
+    excerpt: 'PR TIMESにて「レタスペビレッジ」の取り組みをご紹介いただきました。コミュニティの背景・構想について、外部メディア向けの解説記事です。',
+    href: 'https://prtimes.jp/main/html/rd/p/000000289.000091165.html',
     image: '/images/kawakami/vicemayor_meeting.jpg',
   },
 ];
