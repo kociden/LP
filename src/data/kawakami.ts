@@ -55,13 +55,33 @@ export const concepts = [
   },
 ];
 
+// 画像アセット（public/images/kawakami/ 配下）
+export const images = {
+  hero:      '/images/kawakami/cooperation_person.png', // 協力隊員・コミュニティ主役
+  cosmos:    '/images/kawakami/astro_event.jpg',        // 宇宙イベント
+  idea:      '/images/kawakami/kawakami_idea.jpg',      // 村について考える会議
+  meeting1:  '/images/kawakami/hybrid_meeting.jpg',
+  meeting2:  '/images/kawakami/hybrid_meeting2.jpg',
+  meeting3:  '/images/kawakami/hybrid_meeting3.jpg',
+  vicemayor: '/images/kawakami/vicemayor_meeting.jpg',  // 副村長との会議＝プレス系
+  event1:    '/images/kawakami/event.jpg',
+  event2:    '/images/kawakami/event2.jpg',
+  event3:    '/images/kawakami/event3.jpg',
+};
+
+export const gallery = [
+  images.event1, images.event2, images.event3,
+  images.meeting1, images.meeting2, images.meeting3,
+  images.idea, images.cosmos, images.vicemayor, images.hero,
+];
+
 export const features = [
-  { icon: '💬', title: 'LINEで毎日つながる',    body: 'オープンチャットで村の最新情報・イベント告知を受け取れる。誰でも気軽に参加OK。' },
-  { icon: '📸', title: 'SNSで村のリアル',       body: '月・水・金にInstagram / Threadsを更新。日常や旬の風景をお届け。' },
-  { icon: '🏕️', title: '現地で体験する',       body: '活動費は全額、村のイベント・体験・宿泊・飲食へ。来るたびに発見がある。' },
-  { icon: '🗓️', title: 'イベントを企画する',   body: '川上村に来るイベントをオプチャ内で企画・告知。やりたいを形にできる。' },
-  { icon: '🤝', title: '村について考える会議', body: 'ハイブリッド形式で定期開催。村の未来を一緒に考える対話の場。' },
-  { icon: '🛸', title: 'コアメンへの一歩',     body: '気が合えばDiscordへ。本気で村を盛り上げる仲間として活動できます。' },
+  { icon: '💬', title: 'LINEで毎日つながる',    body: 'オープンチャットで村の最新情報・イベント告知を受け取れる。誰でも気軽に参加OK。', image: null },
+  { icon: '📸', title: 'SNSで村のリアル',       body: '月・水・金にInstagram / Threadsを更新。日常や旬の風景をお届け。',             image: null },
+  { icon: '🏕️', title: '現地で体験する',       body: '活動費は全額、村のイベント・体験・宿泊・飲食へ。来るたびに発見がある。',          image: images.event1 },
+  { icon: '🗓️', title: 'イベントを企画する',   body: '川上村に来るイベントをオプチャ内で企画・告知。やりたいを形にできる。',            image: images.event2 },
+  { icon: '🤝', title: '村について考える会議', body: 'ハイブリッド形式で定期開催。村の未来を一緒に考える対話の場。',                  image: images.meeting1 },
+  { icon: '🛸', title: 'コアメンへの一歩',     body: '気が合えばDiscordへ。本気で村を盛り上げる仲間として活動できます。',              image: images.hero },
 ];
 
 export const news = [
@@ -72,6 +92,7 @@ export const news = [
     title: 'LINEオープンチャット参加者が100名を突破しました',
     excerpt: '2025年1月の開設から最短記録での100名到達。村内議員・村外大学生・参加者の自主的な認知活動が拡大の原動力に。',
     href: '#',
+    image: '/images/kawakami/kawakami_idea.jpg',
   },
   {
     date: '2026.03.20',
@@ -80,14 +101,16 @@ export const news = [
     title: '春のレタス植え付け体験ツアー(仮)の告知',
     excerpt: '高原野菜のシーズン開幕にあわせて、村内農家との連携イベントを企画中。詳細はオプチャでお知らせします。',
     href: '#',
+    image: '/images/kawakami/event.jpg',
   },
   {
     date: '2026.02.10',
     tag: 'press',
     tagLabel: 'プレスリリース',
-    title: '川上村DAO「レタスペビレッジ」始動についての記事掲載(差し替え予定)',
-    excerpt: 'メディア掲載・取材実績はここにリンク予定。素材到着後に差し替えます。',
+    title: '川上村副村長と面会、DAO活動についての意見交換を実施',
+    excerpt: '村内関係者との連携強化に向けた対話。「レタスペビレッジ」の今後の展開についても意見交換を行いました。',
     href: '#',
+    image: '/images/kawakami/vicemayor_meeting.jpg',
   },
 ];
 

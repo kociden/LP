@@ -3,7 +3,10 @@ import Base from '../../../layouts/Base.astro';
 import { community, variants } from '../../../data/kawakami.ts';
 
 // ステータス管理: 完成済みのスラグだけリスト化
-const ready = new Set(['v1-wa-modern']);
+const ready = new Set([
+  'v1-wa-modern', 'v2-earth', 'v3-minimal', 'v4-dark', 'v5-editorial',
+  'v6-brutalism', 'v7-glass', 'v8-showa', 'v9-pop', 'v10-photo',
+]);
 ---
 
 <Base title={`${community.name} デザイン10案 — ${community.prefecture}${community.village}DAO`}>

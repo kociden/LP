@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { community, numbers, concepts, features, news, steps, faqs } from '../../data/kawakami.ts';
+import { community, numbers, concepts, features, news, steps, faqs, images, gallery } from '../../data/kawakami.ts';
 ---
 
 <Base
@@ -65,14 +65,19 @@ import { community, numbers, concepts, features, news, steps, faqs } from '../..
       <div class="about-grid">
         {concepts.map((c, i) => (
           <article class={`concept ${i === 0 ? 'concept-lettuce' : 'concept-cosmos'}`}>
-            <div class="concept-emoji">{c.icon}</div>
-            <h3 set:html={c.title.replace('、', '、<br />')}></h3>
-            <p>{c.body}</p>
-            <ul>
-              {c.bullets.map((b) => (
-                <li><span>{i === 0 ? '●' : '★'}</span>{b}</li>
-              ))}
-            </ul>
+            {i === 1 && (
+              <div class="concept-photo" style={`background-image: url('${images.cosmos}');`} aria-hidden="true"></div>
+            )}
+            <div class="concept-body">
+              <div class="concept-emoji">{c.icon}</div>
+              <h3 set:html={c.title.replace('、', '、<br />')}></h3>
+              <p>{c.body}</p>
+              <ul>
+                {c.bullets.map((b) => (
+                  <li><span>{i === 0 ? '●' : '★'}</span>{b}</li>
+                ))}
+              </ul>
+            </div>
           </article>
         ))}
       </div>
@@ -92,11 +97,29 @@ import { community, numbers, concepts, features, news, steps, faqs } from '../..
 
       <div class="features-grid">
         {features.map((f) => (
-          <div class="feature">
-            <div class="feature-icon">{f.icon}</div>
-            <h3>{f.title}</h3>
-            <p>{f.body}</p>
+          <div class={`feature ${f.image ? 'feature-with-photo' : ''}`}>
+            {f.image && (
+              <div class="feature-photo" style={`background-image: url('${f.image}');`} aria-hidden="true"></div>
+            )}
+            <div class="feature-body">
+              <div class="feature-icon">{f.icon}</div>
+              <h3>{f.title}</h3>
+              <p>{f.body}</p>
+            </div>
           </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery">
+      <div class="gallery-head">
+        <span class="gallery-tag">SNAPSHOTS</span>
+        <p>活動の記録。</p>
+      </div>
+      <div class="gallery-grid">
+        {gallery.slice(0, 8).map((g) => (
+          <div class="gallery-item" style={`background-image: url('${g}');`} aria-hidden="true"></div>
         ))}
       </div>
     </section>
@@ -139,6 +162,9 @@ import { community, numbers, concepts, features, news, steps, faqs } from '../..
         {news.map((n) => (
           <li class="news-item">
             <a href={n.href} class="news-link">
+              {n.image && (
+                <div class="news-thumb" style={`background-image: url('${n.image}');`} aria-hidden="true"></div>
+              )}
               <div class="news-meta">
                 <time class="news-date">{n.date}</time>
                 <span class={`news-tag news-tag-${n.tag}`}>{n.tagLabel}</span>
@@ -382,13 +408,15 @@ import { community, numbers, concepts, features, news, steps, faqs } from '../..
   .about .section-head { justify-content: center; }
   .about .section-lead { margin-left: auto; margin-right: auto; }
   .about-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; text-align: left; }
-  .concept { position: relative; padding: 40px 36px; border-radius: 28px; border: 2px solid var(--lettuce-900); box-shadow: 6px 6px 0 var(--lettuce-900); overflow: hidden; }
+  .concept { position: relative; padding: 0; border-radius: 28px; border: 2px solid var(--lettuce-900); box-shadow: 6px 6px 0 var(--lettuce-900); overflow: hidden; display: flex; flex-direction: column; }
+  .concept-body { padding: 40px 36px; position: relative; }
   .concept-lettuce { background: #fff; color: var(--ink); }
   .concept-lettuce::before {
     content: ''; position: absolute; top: -60px; right: -60px;
     width: 180px; height: 180px; border-radius: 50%;
     background: radial-gradient(circle at 35% 35%, var(--lettuce-300) 0%, var(--lettuce-500) 55%, var(--lettuce-700) 100%);
     opacity: 0.25;
+    z-index: 0;
   }
   .concept-cosmos {
     background:
@@ -400,16 +428,18 @@ import { community, numbers, concepts, features, news, steps, faqs } from '../..
     border-color: var(--cosmos-900);
     box-shadow: 6px 6px 0 var(--cosmos-900);
   }
-  .concept-cosmos::before {
-    content: ''; position: absolute; bottom: -60px; left: -60px;
-    width: 200px; height: 200px; border-radius: 50%;
-    background: var(--cosmos-500); opacity: 0.5; filter: blur(30px);
+  .concept-photo {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 2px solid var(--cosmos-900);
   }
-  .concept-emoji { position: relative; font-size: 3.4rem; margin-bottom: 18px; }
-  .concept h3 { position: relative; font-family: 'Noto Serif JP', serif; font-size: 1.6rem; font-weight: 900; line-height: 1.5; margin-bottom: 14px; }
-  .concept p { position: relative; font-size: 0.92rem; line-height: 2; margin-bottom: 22px; }
+  .concept-emoji { position: relative; font-size: 3.4rem; margin-bottom: 18px; z-index: 1; }
+  .concept h3 { position: relative; font-family: 'Noto Serif JP', serif; font-size: 1.6rem; font-weight: 900; line-height: 1.5; margin-bottom: 14px; z-index: 1; }
+  .concept p { position: relative; font-size: 0.92rem; line-height: 2; margin-bottom: 22px; z-index: 1; }
   .concept-cosmos p { color: rgba(251,247,238,0.85); }
-  .concept ul { position: relative; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; }
+  .concept ul { position: relative; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; z-index: 1; }
   .concept li { display: flex; align-items: flex-start; gap: 10px; }
   .concept-lettuce li span { color: var(--lettuce-500); }
   .concept-cosmos li span  { color: var(--gold); }
@@ -419,11 +449,23 @@ import { community, numbers, concepts, features, news, steps, faqs } from '../..
   .features .section-head { justify-content: center; }
   .features .section-lead { margin-left: auto; margin-right: auto; }
   .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; text-align: left; }
-  .feature { background: #fff; border: 2px solid var(--lettuce-900); border-radius: 20px; padding: 28px 26px; box-shadow: 4px 4px 0 var(--lettuce-900); transition: transform 0.25s ease; }
+  .feature { background: #fff; border: 2px solid var(--lettuce-900); border-radius: 20px; overflow: hidden; box-shadow: 4px 4px 0 var(--lettuce-900); transition: transform 0.25s ease; display: flex; flex-direction: column; }
   .feature:hover { transform: translateY(-4px); }
+  .feature-photo { width: 100%; aspect-ratio: 16 / 10; background-size: cover; background-position: center; border-bottom: 2px solid var(--lettuce-900); }
+  .feature-body { padding: 24px 22px; }
+  .feature-with-photo .feature-icon { font-size: 1.8rem; margin-bottom: 10px; }
   .feature-icon { font-size: 2.4rem; margin-bottom: 14px; }
   .feature h3 { font-size: 1.05rem; font-weight: 700; color: var(--lettuce-900); margin-bottom: 10px; }
   .feature p { font-size: 0.85rem; line-height: 1.9; color: var(--ink-soft); }
+
+  /* ============ Gallery ============ */
+  .gallery { max-width: 1200px; margin: 0 auto; padding: 40px 32px 100px; }
+  .gallery-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 20px; }
+  .gallery-tag { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.2em; color: var(--lettuce-700); padding: 4px 10px; background: var(--lettuce-100); border-radius: 4px; }
+  .gallery-head p { font-family: 'Noto Serif JP', serif; font-size: 1.1rem; font-weight: 700; color: var(--lettuce-900); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .gallery-item { aspect-ratio: 1 / 1; background-size: cover; background-position: center; border-radius: 12px; transition: transform 0.3s; }
+  .gallery-item:hover { transform: scale(1.03); }
 
   /* ============ Stats ============ */
   .stats {
@@ -459,7 +501,8 @@ import { community, numbers, concepts, features, news, steps, faqs } from '../..
   .news-list { list-style: none; border-top: 2px solid var(--lettuce-900); }
   .news-item { border-bottom: 1px solid var(--line); transition: background 0.2s; }
   .news-item:hover { background: rgba(78, 168, 58, 0.06); }
-  .news-link { display: grid; grid-template-columns: 200px 1fr auto; gap: 28px; align-items: center; padding: 28px 16px; color: inherit; }
+  .news-link { display: grid; grid-template-columns: 160px 160px 1fr auto; gap: 24px; align-items: center; padding: 22px 16px; color: inherit; }
+  .news-thumb { width: 100%; aspect-ratio: 16 / 10; background-size: cover; background-position: center; border-radius: 10px; border: 1px solid var(--line); }
   .news-meta { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
   .news-body { min-width: 0; }
   .news-date { font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--ink-soft); letter-spacing: 0.04em; }
@@ -544,9 +587,13 @@ import { community, numbers, concepts, features, news, steps, faqs } from '../..
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
 
     .news { padding: 80px 22px; }
-    .news-link { grid-template-columns: 1fr auto; gap: 12px; padding: 24px 12px; }
+    .news-link { grid-template-columns: 1fr auto; gap: 12px; padding: 22px 12px; }
+    .news-thumb { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
     .news-meta { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 12px; }
     .news-title { font-size: 1.02rem; }
+
+    .gallery { padding: 20px 22px 60px; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
 
     .steps { padding: 80px 22px; }
     .step { flex-direction: column; padding: 24px; gap: 16px; }

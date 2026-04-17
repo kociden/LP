@@ -1,0 +1,242 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { community, numbers, features, news, images, gallery } from '../../../data/kawakami.ts';
+---
+
+<Base title={`${community.name} (昭和レトロ案) — ${community.prefecture}${community.village}`}>
+  <div class="showa">
+    <nav class="nav">
+      <div class="nav-inner">
+        <div class="nav-logo"><span class="nav-logo-mark">◉</span><span>{community.name}</span></div>
+        <div class="nav-links">
+          <a href="#about">知る</a>
+          <a href="#news">便り</a>
+          <a href={community.lineUrl}>参加する</a>
+        </div>
+      </div>
+      <div class="nav-rule"></div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-stamp"><span class="hero-stamp-text">NO. 令和八年</span></div>
+      <div class="hero-inner">
+        <div class="hero-kicker">
+          <span class="hero-kicker-line"></span>
+          <span class="hero-kicker-text">{community.prefecture}{community.village}DAO</span>
+          <span class="hero-kicker-line"></span>
+        </div>
+        <h1 class="hero-title">
+          <span class="hero-title-row">レタスから、</span>
+          <span class="hero-title-row hero-title-accent">宇宙まで。</span>
+        </h1>
+        <div class="hero-divider"><span class="hero-divider-dot">◆</span></div>
+        <p class="hero-desc">
+          {community.lead}<br />
+          村内議員・村外大学生・参加者が集う、新時代の自律分散型コミュニティ。
+        </p>
+        <div class="hero-cta-row">
+          <a href={community.lineUrl} class="hero-cta">▶ LINEで入会する</a>
+          <a href="#about" class="hero-sub-link">詳しく知る ／</a>
+        </div>
+      </div>
+      <div class="hero-photo" style={`background-image: url('${images.hero}');`}></div>
+      <div class="hero-marquee">
+        <span>HOMETOWN ★ KAWAKAMI ★ DAO ★ LETTUCE ★ COSMOS ★ SINCE 2025 ★ HOMETOWN ★ KAWAKAMI ★ DAO ★ LETTUCE ★ COSMOS ★ SINCE 2025 ★</span>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="about-header">
+        <span class="section-num">［第壱号］</span>
+        <h2 class="about-h2">{community.name}<br />とは何ぞや</h2>
+        <div class="about-rule"></div>
+      </div>
+      <div class="about-body">
+        <p class="about-lead">{community.lead}{community.operator}が運営し、村役場・村内外メンバーと連携して活動しております。</p>
+        <div class="about-stats">
+          {numbers.slice(0, 3).map((n, i) => (
+            <div class="stat">
+              <span class="stat-cap">{['一', '二', '三'][i]}</span>
+              <span class="stat-num">{n.value}{n.unit}</span>
+              <span class="stat-label">{n.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="features-header">
+        <span class="section-num light">［第弐号］</span>
+        <h2 class="features-h2">できる事ども。</h2>
+      </div>
+      <div class="features-grid">
+        {features.map((f, i) => (
+          <article class="f-card">
+            {f.image && <div class="f-img" style={`background-image: url('${f.image}');`}></div>}
+            <div class="f-card-head">
+              <span class="f-card-num">{['壱','弐','参','肆','伍','陸'][i]}</span>
+              <span class="f-card-icon">{f.icon}</span>
+            </div>
+            <h3>{f.title}</h3>
+            <p>{f.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="news" class="news">
+      <div class="news-header">
+        <span class="section-num">［第参号］</span>
+        <h2 class="about-h2">便り。</h2>
+      </div>
+      <ul>
+        {news.map((n) => (
+          <li>
+            <a href={n.href}>
+              {n.image && <div class="n-img" style={`background-image: url('${n.image}');`}></div>}
+              <div class="n-body">
+                <div class="n-meta"><time>{n.date}</time><span class={`n-tag n-tag-${n.tag}`}>{n.tagLabel}</span></div>
+                <h3>{n.title}</h3>
+                <p>{n.excerpt}</p>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="cta">
+      <div class="cta-inner">
+        <div class="cta-badge"><span class="cta-badge-outer">★</span><span class="cta-badge-text">入会募集中</span><span class="cta-badge-outer">★</span></div>
+        <h2 class="cta-h2">あなたを、<br />101人目の村人に。</h2>
+        <p class="cta-desc">関係人口を共に耕す寄合へ、<br />どうぞお気軽にお越しください。</p>
+        <a href={community.lineUrl} class="cta-button"><span>LINEオープンチャットに参加する</span><span class="cta-button-arrow">▶</span></a>
+        <div class="cta-meta">
+          <div class="cta-meta-line"></div>
+          <p class="cta-note">運営 ／ {community.operator}</p>
+        </div>
+      </div>
+    </section>
+
+    <a href="/municipalities/kawakami" class="back-link">← 川上村LP一覧に戻る</a>
+  </div>
+</Base>
+
+<style>
+  .showa { font-family: 'BIZ UDGothic', 'Noto Sans JP', sans-serif; color: #2a1f15; background: #f4ead5; min-height: 100vh; font-weight: 400; position: relative; }
+  .showa::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(rgba(42, 31, 21, 0.08) 1px, transparent 1px), radial-gradient(rgba(42, 31, 21, 0.05) 1px, transparent 1px); background-size: 3px 3px, 7px 7px; background-position: 0 0, 1px 2px; pointer-events: none; z-index: 1; opacity: 0.7; }
+  .showa > * { position: relative; z-index: 2; }
+
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #f4ead5; border-bottom: 3px double #2a1f15; }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 14px 32px; max-width: 1200px; margin: 0 auto; }
+  .nav-rule { height: 2px; background: #2a1f15; margin-top: 2px; }
+  .nav-logo { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 1rem; letter-spacing: 0.08em; }
+  .nav-logo-mark { color: #8b2e1a; }
+  .nav-links { display: flex; gap: 22px; font-size: 0.82rem; font-weight: 700; }
+  .nav-links a { letter-spacing: 0.1em; padding: 4px 10px; border: 1.5px solid transparent; transition: all 0.2s; }
+  .nav-links a:hover { border-color: #2a1f15; background: #d4923c; color: #f4ead5; }
+
+  .hero { min-height: 100vh; padding: 110px 32px 0; position: relative; background: linear-gradient(135deg, rgba(212, 146, 60, 0.12) 0%, rgba(244, 234, 213, 0) 60%), repeating-linear-gradient(45deg, rgba(139, 46, 26, 0.04) 0 2px, transparent 2px 18px), #f4ead5; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; overflow: hidden; }
+  .hero-stamp { position: absolute; top: 130px; right: 40px; transform: rotate(-8deg); border: 2px solid #8b2e1a; padding: 10px 16px; color: #8b2e1a; font-family: 'Inter', 'BIZ UDGothic', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.22em; opacity: 0.85; z-index: 5; background: #f4ead5; }
+  .hero-stamp::before { content: ''; position: absolute; inset: 3px; border: 1px solid #8b2e1a; pointer-events: none; }
+  .hero-inner { padding: 30px 0; }
+  .hero-kicker { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; color: #8b2e1a; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.25em; }
+  .hero-kicker-line { width: 36px; height: 2px; background: #8b2e1a; }
+  .hero-title { font-weight: 700; font-size: clamp(2.4rem, 6vw, 4.6rem); line-height: 1.25; letter-spacing: 0.04em; text-shadow: 4px 4px 0 rgba(212, 146, 60, 0.35); }
+  .hero-title-row { display: block; }
+  .hero-title-accent { color: #8b2e1a; text-shadow: 4px 4px 0 rgba(45, 74, 43, 0.18); }
+  .hero-divider { margin: 26px 0; max-width: 380px; border-top: 3px double #2a1f15; position: relative; height: 14px; }
+  .hero-divider-dot { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #f4ead5; padding: 0 12px; color: #2d4a2b; }
+  .hero-desc { font-size: 0.96rem; line-height: 2.05; color: #4a3828; max-width: 520px; }
+  .hero-cta-row { display: flex; align-items: center; gap: 22px; margin-top: 36px; flex-wrap: wrap; }
+  .hero-cta { display: inline-block; padding: 14px 30px; background: #2d4a2b; color: #f4ead5; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.12em; border: 2px solid #2a1f15; box-shadow: 5px 5px 0 #2a1f15; transition: all 0.15s; }
+  .hero-cta:hover { transform: translate(3px, 3px); box-shadow: 2px 2px 0 #2a1f15; background: #8b2e1a; }
+  .hero-sub-link { font-weight: 700; font-size: 0.82rem; letter-spacing: 0.12em; color: #2a1f15; border-bottom: 2px solid #2a1f15; padding-bottom: 4px; }
+  .hero-photo { aspect-ratio: 4/5; max-width: 380px; justify-self: center; background-size: cover; background-position: center; border: 4px solid #2a1f15; box-shadow: 8px 8px 0 #d4923c; filter: sepia(0.15); }
+  .hero-marquee { grid-column: 1 / -1; margin: 50px -32px 0; background: #8b2e1a; color: #f4ead5; padding: 12px 0; overflow: hidden; white-space: nowrap; border-top: 2px solid #2a1f15; border-bottom: 2px solid #2a1f15; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.22em; }
+  .hero-marquee span { display: inline-block; animation: marquee 28s linear infinite; padding-left: 100%; }
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+  .about { padding: 110px 32px; max-width: 1100px; margin: 0 auto; }
+  .about-header { text-align: center; margin-bottom: 56px; }
+  .section-num { display: inline-block; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.18em; color: #d4923c; background: #2a1f15; padding: 5px 14px; margin-bottom: 22px; }
+  .section-num.light { background: #d4923c; color: #2a1f15; }
+  .about-h2, .features-h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; line-height: 1.6; letter-spacing: 0.02em; }
+  .about-rule { width: 80px; height: 5px; background: #8b2e1a; margin: 24px auto 0; position: relative; }
+  .about-rule::before, .about-rule::after { content: ''; position: absolute; top: 50%; width: 18px; height: 1.5px; background: #8b2e1a; transform: translateY(-50%); }
+  .about-rule::before { left: -36px; }
+  .about-rule::after { right: -36px; }
+  .about-body { max-width: 820px; margin: 0 auto; }
+  .about-lead { font-size: 0.98rem; line-height: 2.1; text-align: justify; margin-bottom: 56px; }
+  .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 36px 0; border-top: 3px double #2a1f15; border-bottom: 3px double #2a1f15; }
+  .stat { text-align: center; padding: 0 12px; border-right: 1px dashed rgba(42, 31, 21, 0.3); }
+  .stat:last-child { border-right: none; }
+  .stat-cap { display: block; font-size: 0.78rem; font-weight: 700; color: #8b2e1a; margin-bottom: 10px; letter-spacing: 0.18em; }
+  .stat-num { display: block; font-size: 2.4rem; font-weight: 700; color: #2d4a2b; letter-spacing: 0.02em; margin-bottom: 6px; }
+  .stat-label { display: block; font-size: 0.78rem; color: #4a3828; letter-spacing: 0.08em; font-weight: 700; }
+
+  .features { padding: 110px 32px; background: repeating-linear-gradient(90deg, rgba(244, 234, 213, 0.04) 0 4px, transparent 4px 20px), #2d4a2b; color: #f4ead5; border-top: 4px solid #2a1f15; border-bottom: 4px solid #2a1f15; }
+  .features-header { max-width: 1100px; margin: 0 auto 56px; text-align: center; }
+  .features-header h2 { color: #f4ead5; margin-top: 18px; }
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+  .f-card { background: #f4ead5; color: #2a1f15; border: 2px solid #2a1f15; box-shadow: 6px 6px 0 #d4923c; overflow: hidden; }
+  .f-img { aspect-ratio: 16/10; background-size: cover; background-position: center; border-bottom: 2px solid #2a1f15; filter: sepia(0.15); }
+  .f-card-head { display: flex; justify-content: space-between; align-items: baseline; padding: 18px 24px 14px; border-bottom: 2px solid #8b2e1a; }
+  .f-card-num { font-size: 1.8rem; font-weight: 700; color: #8b2e1a; }
+  .f-card-icon { font-size: 1.4rem; }
+  .f-card h3 { font-size: 1.15rem; font-weight: 700; padding: 16px 24px 10px; letter-spacing: 0.05em; }
+  .f-card p { padding: 0 24px 24px; font-size: 0.86rem; line-height: 1.95; color: #4a3828; }
+
+  .news { padding: 110px 32px; max-width: 1000px; margin: 0 auto; }
+  .news-header { text-align: center; margin-bottom: 48px; }
+  .news ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .news li a { display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: center; padding: 20px; background: #fff; border: 2px solid #2a1f15; box-shadow: 4px 4px 0 #d4923c; transition: transform 0.15s; }
+  .news li a:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #d4923c; }
+  .n-img { aspect-ratio: 4/3; background-size: cover; background-position: center; border: 1px solid #2a1f15; filter: sepia(0.15); }
+  .n-body { min-width: 0; }
+  .n-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 8px; }
+  .n-meta time { font-family: monospace; font-size: 0.78rem; color: #8b2e1a; font-weight: 700; }
+  .n-tag { font-size: 0.66rem; padding: 3px 8px; letter-spacing: 0.08em; font-weight: 700; }
+  .n-tag-press { background: #2a1f15; color: #d4923c; }
+  .n-tag-event { background: #d4923c; color: #2a1f15; }
+  .n-tag-milestone { background: #8b2e1a; color: #f4ead5; }
+  .news h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; line-height: 1.55; letter-spacing: 0.04em; }
+  .news p { font-size: 0.84rem; line-height: 1.9; color: #4a3828; }
+
+  .cta { padding: 110px 32px; text-align: center; background: radial-gradient(circle at 50% 40%, rgba(212, 146, 60, 0.22) 0%, rgba(244, 234, 213, 0) 55%), #f4ead5; }
+  .cta-inner { max-width: 680px; margin: 0 auto; }
+  .cta-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 22px; background: #8b2e1a; color: #f4ead5; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.22em; margin-bottom: 32px; border: 2px solid #2a1f15; box-shadow: 4px 4px 0 #2a1f15; }
+  .cta-badge-outer { color: #d4923c; }
+  .cta-h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; line-height: 1.6; letter-spacing: 0.03em; margin-bottom: 24px; }
+  .cta-h2::after { content: ''; display: block; width: 60px; height: 3px; background: #8b2e1a; margin: 22px auto 0; }
+  .cta-desc { font-size: 0.92rem; line-height: 2; color: #4a3828; margin-bottom: 44px; }
+  .cta-button { display: inline-flex; align-items: center; gap: 14px; padding: 20px 44px; background: #2a1f15; color: #f4ead5; font-weight: 700; font-size: 0.98rem; letter-spacing: 0.16em; border: 2px solid #2a1f15; box-shadow: 6px 6px 0 #d4923c; transition: all 0.15s; }
+  .cta-button:hover { transform: translate(3px, 3px); box-shadow: 3px 3px 0 #d4923c; background: #8b2e1a; }
+  .cta-button-arrow { font-size: 0.78rem; color: #d4923c; }
+  .cta-meta { margin-top: 64px; }
+  .cta-meta-line { width: 120px; height: 1px; background: #2a1f15; margin: 0 auto 22px; }
+  .cta-note { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.16em; color: #2a1f15; }
+
+  .back-link { display: block; text-align: center; padding: 24px; font-size: 0.82rem; font-weight: 700; background: #2a1f15; color: #f4ead5; letter-spacing: 0.12em; }
+  .back-link:hover { background: #8b2e1a; color: #d4923c; }
+
+  @media (max-width: 768px) {
+    .nav-inner { padding: 12px 18px; }
+    .nav-links { gap: 12px; font-size: 0.76rem; }
+    .hero { grid-template-columns: 1fr; padding: 100px 20px 0; }
+    .hero-stamp { top: 88px; right: 18px; font-size: 0.62rem; padding: 7px 10px; }
+    .hero-photo { max-width: 280px; }
+    .hero-marquee { margin: 36px -20px 0; font-size: 0.74rem; }
+    .about { padding: 60px 20px; }
+    .about-stats { grid-template-columns: 1fr; gap: 22px; padding: 24px 0; }
+    .stat { border-right: none; border-bottom: 1px dashed rgba(42, 31, 21, 0.3); padding-bottom: 22px; }
+    .stat:last-child { border-bottom: none; padding-bottom: 0; }
+    .features { padding: 60px 20px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .news { padding: 60px 20px; }
+    .news li a { grid-template-columns: 1fr; }
+    .cta { padding: 70px 20px; }
+    .cta-button { padding: 16px 26px; font-size: 0.88rem; letter-spacing: 0.1em; }
+  }
+</style>

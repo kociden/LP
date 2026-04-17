@@ -1,0 +1,190 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { community, numbers, concepts, features, news, steps, images } from '../../../data/kawakami.ts';
+---
+
+<Base title={`${community.name} (アースカラー案) — ${community.prefecture}${community.village}`}>
+  <div class="earth">
+    <nav class="nav">
+      <div class="nav-logo"><span class="nav-dot"></span>{community.name}</div>
+      <a href={community.lineUrl} class="nav-cta">参加する</a>
+    </nav>
+
+    <section class="hero" style={`background-image: linear-gradient(165deg, rgba(232, 220, 200, 0.7) 0%, rgba(196, 149, 106, 0.85) 100%), url('${images.hero}');`}>
+      <div class="hero-texture"></div>
+      <div class="hero-content">
+        <p class="hero-tag">KAWAKAMI DAO × COMMUNITY × WEB3</p>
+        <h1>土と、星と、<br />人でつながる、<br />川上村。</h1>
+        <div class="hero-bottom">
+          <p>{community.lead}</p>
+          <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-stack">
+      {concepts.map((c, i) => (
+        <div class={`feature-row ${i % 2 === 1 ? 'reverse' : ''}`}>
+          <div class="feature-img" style={`background-image: url('${i === 0 ? images.event1 : images.cosmos}'); background-color: ${i === 0 ? '#8a9a7b' : '#d4c5a0'};`}></div>
+          <div class="feature-text">
+            <span class="feature-num">{String(i + 1).padStart(2, '0')}</span>
+            <h2 set:html={c.title.replace('、', '、<br />')}></h2>
+            <p>{c.body}</p>
+          </div>
+        </div>
+      ))}
+      <div class="feature-row">
+        <div class="feature-img" style={`background-image: url('${images.idea}'); background-color: #c4956a;`}></div>
+        <div class="feature-text">
+          <span class="feature-num">03</span>
+          <h2>関係人口を、<br />ともに耕す。</h2>
+          <p>住んでいなくても関われる。オンラインで繋がり、リアルで会う。あなたのペースで、川上村と関係を結べます。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote" style={`background-image: linear-gradient(rgba(58, 50, 40, 0.88), rgba(58, 50, 40, 0.88)), url('${images.cosmos}');`}>
+      <div class="quote-inner">
+        <blockquote>「100人で耕す、<br />川上村のこれから。」</blockquote>
+        <cite>— LETTUCE-VILLE / KAWAKAMI DAO</cite>
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="about-inner">
+        <div class="about-header">
+          <span class="about-tag">What we do</span>
+          <h2>レタスペビレッジで、<br />できること。</h2>
+        </div>
+        <div class="about-grid">
+          {features.map((f) => (
+            <div class="about-card">
+              {f.image && <div class="card-img" style={`background-image: url('${f.image}');`}></div>}
+              <div class="about-card-icon">{f.icon}</div>
+              <h3>{f.title}</h3>
+              <p>{f.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="news">
+      <div class="news-inner">
+        <span class="about-tag">News &amp; Press</span>
+        <h2>ニュース・プレスリリース。</h2>
+        <ul>
+          {news.map((n) => (
+            <li>
+              <a href={n.href}>
+                {n.image && <div class="news-img" style={`background-image: url('${n.image}');`}></div>}
+                <div>
+                  <div class="news-meta"><time>{n.date}</time><span class={`news-tag news-tag-${n.tag}`}>{n.tagLabel}</span></div>
+                  <h3>{n.title}</h3>
+                  <p>{n.excerpt}</p>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="cta" style={`background-image: linear-gradient(165deg, rgba(245, 240, 232, 0.92) 0%, rgba(232, 220, 200, 0.92) 100%), url('${images.event2}');`}>
+      <div class="cta-content">
+        <h2>土地の声を聴き、<br />人をつなぎ、未来を耕す。</h2>
+        <p>まずはLINEオープンチャットから。</p>
+        <a href={community.lineUrl} class="cta-button">コミュニティに参加する →</a>
+        <span class="cta-org">運営: {community.operator}</span>
+      </div>
+    </section>
+
+    <a href="/municipalities/kawakami" class="back-link">← 川上村LP一覧に戻る</a>
+  </div>
+</Base>
+
+<style>
+  .earth { font-family: 'Noto Sans JP', sans-serif; color: #3a3228; background: #f5f0e8; }
+  .nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(245, 240, 232, 0.92); backdrop-filter: blur(10px); }
+  .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 0.95rem; }
+  .nav-dot { width: 8px; height: 8px; border-radius: 50%; background: #8B6914; }
+  .nav-cta { font-size: 0.8rem; padding: 8px 22px; border: 1px solid #3a3228; border-radius: 100px; }
+  .nav-cta:hover { background: #3a3228; color: #f5f0e8; }
+
+  .hero { min-height: 100vh; display: flex; align-items: flex-end; padding: 0 48px 80px; position: relative; background-size: cover; background-position: center; overflow: hidden; }
+  .hero-texture { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity: 0.08; pointer-events: none; }
+  .hero-content { position: relative; z-index: 1; width: 100%; }
+  .hero-tag { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.22em; color: rgba(58, 50, 40, 0.55); margin-bottom: 28px; }
+  .hero h1 { font-size: clamp(2.4rem, 6vw, 4.8rem); font-weight: 900; line-height: 1.4; margin-bottom: 40px; color: #2a2218; }
+  .hero-bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
+  .hero-bottom p { max-width: 480px; font-size: 0.95rem; line-height: 2; color: rgba(58, 50, 40, 0.8); font-weight: 300; }
+  .hero-scroll { display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0; }
+  .hero-scroll span { font-family: 'Inter', sans-serif; font-size: 0.65rem; letter-spacing: 0.15em; color: rgba(58, 50, 40, 0.5); }
+  .scroll-line { width: 1px; height: 48px; background: rgba(58, 50, 40, 0.3); }
+
+  .features-stack { padding: 120px 48px; display: flex; flex-direction: column; gap: 100px; }
+  .feature-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1100px; margin: 0 auto; width: 100%; }
+  .feature-row.reverse { direction: rtl; }
+  .feature-row.reverse > * { direction: ltr; }
+  .feature-img { aspect-ratio: 4/3; border-radius: 8px; background-size: cover; background-position: center; }
+  .feature-num { font-family: 'Inter', sans-serif; font-size: 0.72rem; color: #8B6914; letter-spacing: 0.18em; margin-bottom: 14px; display: block; }
+  .feature-text h2 { font-size: 1.9rem; font-weight: 700; margin-bottom: 20px; line-height: 1.5; }
+  .feature-text p { font-size: 0.92rem; line-height: 2; color: #777; font-weight: 300; }
+
+  .quote { padding: 140px 48px; background-size: cover; background-position: center; color: #f5f0e8; }
+  .quote-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+  blockquote { font-family: 'Noto Serif JP', serif; font-size: clamp(1.5rem, 3.2vw, 2.4rem); line-height: 1.9; font-weight: 400; margin-bottom: 32px; }
+  cite { font-style: normal; font-size: 0.8rem; color: rgba(245, 240, 232, 0.55); letter-spacing: 0.15em; }
+
+  .about { padding: 120px 48px; }
+  .about-inner { max-width: 1100px; margin: 0 auto; }
+  .about-tag { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.22em; color: #8B6914; display: block; margin-bottom: 14px; }
+  .about-header h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; line-height: 1.6; margin-bottom: 56px; }
+  .about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .about-card { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid rgba(139, 105, 20, 0.1); transition: transform 0.25s; }
+  .about-card:hover { transform: translateY(-4px); }
+  .card-img { aspect-ratio: 16/10; background-size: cover; background-position: center; }
+  .about-card-icon { font-size: 1.8rem; padding: 24px 24px 0; }
+  .about-card h3 { font-size: 1rem; font-weight: 700; padding: 10px 24px 0; margin-bottom: 10px; }
+  .about-card p { font-size: 0.82rem; line-height: 1.9; padding: 0 24px 26px; color: #888; font-weight: 300; }
+
+  .news { padding: 100px 48px; background: rgba(139, 105, 20, 0.04); }
+  .news-inner { max-width: 1000px; margin: 0 auto; }
+  .news h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; margin-bottom: 48px; }
+  .news ul { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+  .news li a { display: grid; grid-template-columns: 180px 1fr; gap: 28px; align-items: center; padding: 20px; background: #fff; border-radius: 10px; transition: transform 0.2s; }
+  .news li a:hover { transform: translateX(4px); }
+  .news-img { aspect-ratio: 16/10; background-size: cover; background-position: center; border-radius: 6px; }
+  .news-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 8px; }
+  .news-meta time { font-family: 'Inter', sans-serif; font-size: 0.78rem; color: #888; }
+  .news-tag { font-size: 0.68rem; padding: 3px 10px; border-radius: 3px; letter-spacing: 0.08em; }
+  .news-tag-press { background: #3a3228; color: #f5f0e8; }
+  .news-tag-event { background: #c89344; color: #3a3228; }
+  .news-tag-milestone { background: #8B6914; color: #f5f0e8; }
+  .news li h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; line-height: 1.5; }
+  .news li p { font-size: 0.82rem; line-height: 1.7; color: #888; font-weight: 300; }
+
+  .cta { padding: 150px 48px; text-align: center; background-size: cover; background-position: center; }
+  .cta h2 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; line-height: 1.5; margin-bottom: 18px; }
+  .cta > .cta-content > p { font-size: 0.9rem; color: #888; margin-bottom: 44px; font-weight: 300; }
+  .cta-button { display: inline-block; padding: 18px 52px; background: #8B6914; color: #fff; border-radius: 100px; font-size: 0.95rem; font-weight: 500; transition: transform 0.3s; }
+  .cta-button:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(139, 105, 20, 0.3); }
+  .cta-org { display: block; margin-top: 28px; font-size: 0.72rem; color: #bbb; font-family: 'Inter', sans-serif; }
+
+  .back-link { display: block; text-align: center; padding: 30px; font-family: 'Inter', sans-serif; font-size: 0.78rem; color: #999; border-top: 1px solid rgba(58, 50, 40, 0.1); }
+  .back-link:hover { color: #3a3228; }
+
+  @media (max-width: 768px) {
+    .nav { padding: 14px 22px; }
+    .hero { padding: 0 22px 60px; }
+    .hero-scroll { display: none; }
+    .features-stack { padding: 80px 22px; gap: 72px; }
+    .feature-row, .feature-row.reverse { grid-template-columns: 1fr; direction: ltr; gap: 28px; }
+    .quote { padding: 80px 22px; }
+    .about { padding: 80px 22px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .news { padding: 70px 22px; }
+    .news li a { grid-template-columns: 1fr; }
+    .cta { padding: 100px 22px; }
+  }
+</style>
