@@ -1,6 +1,6 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import { community, numbers, features, news, images, gallery } from '../../../data/kawakami.ts';
+import { community, numbers, features, news, images, gallery, profile, organization } from '../../../data/kawakami.ts';
 ---
 
 <Base title={`${community.name} (エディトリアル案) — ${community.prefecture}${community.village}`}>
@@ -84,6 +84,27 @@ import { community, numbers, features, news, images, gallery } from '../../../da
             <div><strong>{n.value}{n.unit}</strong><span>{n.label}</span></div>
           ))}
         </div>
+      </div>
+    </section>
+
+    <section class="organizers">
+      <div class="story-header"><span class="story-label">Organizers</span><span class="story-num">03</span></div>
+      <div class="org-grid">
+        <article class="org-card">
+          <div class="org-photo" style={`background-image: url('${profile.photo}');`}></div>
+          <span class="column-tag">Person</span>
+          <h3>{profile.handle}</h3>
+          <p class="org-role">{profile.role}</p>
+          <p>{profile.bio}</p>
+        </article>
+        <article class="org-card">
+          <div class="org-mark"><span class="org-initial">A</span><span class="org-en">{organization.nameEn}</span></div>
+          <span class="column-tag">Company</span>
+          <h3>{organization.name}</h3>
+          <p class="org-role">{organization.role}</p>
+          <p>{organization.bio}</p>
+          <a href={organization.url} target="_blank" rel="noopener" class="org-link">{organization.urlLabel} →</a>
+        </article>
       </div>
     </section>
 
@@ -174,6 +195,18 @@ import { community, numbers, features, news, images, gallery } from '../../../da
   .numbers-grid strong { font-family: 'Noto Serif JP', serif; font-size: 2.4rem; font-weight: 900; }
   .numbers-grid span { font-size: 0.78rem; color: rgba(242, 237, 230, 0.65); letter-spacing: 0.06em; }
 
+  .organizers { padding: 100px 48px; max-width: 1200px; margin: 0 auto; }
+  .org-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .org-card { padding: 28px 32px 40px; border-top: 2px solid #1a1a1a; }
+  .org-photo { aspect-ratio: 4/3; background-size: cover; background-position: center; margin-bottom: 20px; }
+  .org-mark { aspect-ratio: 4/3; background: linear-gradient(135deg, #C84B31 0%, #1a1a1a 100%); color: #f2ede6; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin-bottom: 20px; }
+  .org-initial { font-family: 'Noto Serif JP', serif; font-size: 4rem; font-weight: 900; line-height: 1; font-style: italic; }
+  .org-en { font-family: 'Inter', sans-serif; font-size: 0.66rem; letter-spacing: 0.22em; opacity: 0.85; }
+  .org-card h3 { font-size: 1.4rem; font-weight: 900; line-height: 1.3; margin: 10px 0 6px; }
+  .org-role { font-size: 0.78rem; color: #888; margin-bottom: 14px; }
+  .org-card p { font-size: 0.82rem; line-height: 2; color: #777; font-weight: 300; }
+  .org-link { display: inline-block; margin-top: 12px; font-family: 'Inter', sans-serif; font-size: 0.78rem; color: #C84B31; border-bottom: 1px solid #C84B31; padding-bottom: 2px; }
+
   .cta { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; padding: 110px 48px; align-items: end; }
   .cta-issue { font-family: 'Inter', sans-serif; font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: #C84B31; display: block; margin-bottom: 22px; }
   .cta h2 { font-size: clamp(2rem, 5vw, 4rem); font-weight: 900; line-height: 1.3; letter-spacing: -0.02em; }
@@ -202,6 +235,8 @@ import { community, numbers, features, news, images, gallery } from '../../../da
     .news-list { grid-template-columns: 1fr; }
     .large-type { padding: 60px 22px; }
     .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+    .organizers { padding: 60px 22px; }
+    .org-grid { grid-template-columns: 1fr; gap: 32px; }
     .cta { grid-template-columns: 1fr; gap: 32px; padding: 70px 22px; }
   }
 </style>

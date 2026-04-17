@@ -1,6 +1,6 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import { community, numbers, features, news, images, gallery } from '../../../data/kawakami.ts';
+import { community, numbers, features, news, images, gallery, profile, organization } from '../../../data/kawakami.ts';
 ---
 
 <Base title={`${community.name} (グラスモーフィズム案) — ${community.prefecture}${community.village}`}>
@@ -97,6 +97,32 @@ import { community, numbers, features, news, images, gallery } from '../../../da
           </li>
         ))}
       </ul>
+    </section>
+
+    <section class="organizers">
+      <div class="section-head section-head-center"><span class="section-num">04</span><span class="section-title">Organizers</span></div>
+      <h2 class="features-title">運営は、<span class="grad-text">この2者。</span></h2>
+      <div class="org-grid">
+        <article class="org-card">
+          <div class="org-photo" style={`background-image: url('${profile.photo}');`}></div>
+          <div class="org-body">
+            <span class="org-kind">Person</span>
+            <h3>{profile.handle}</h3>
+            <p class="org-role">{profile.role}</p>
+            <p>{profile.bio}</p>
+          </div>
+        </article>
+        <article class="org-card">
+          <div class="org-mark"><span class="org-initial">A</span><span class="org-en">{organization.nameEn}</span></div>
+          <div class="org-body">
+            <span class="org-kind">Company</span>
+            <h3>{organization.name}</h3>
+            <p class="org-role">{organization.role}</p>
+            <p>{organization.bio}</p>
+            <a href={organization.url} target="_blank" rel="noopener" class="org-link">{organization.urlLabel} ↗</a>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section class="cta">
@@ -209,6 +235,20 @@ import { community, numbers, features, news, images, gallery } from '../../../da
   .n-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; line-height: 1.5; }
   .n-card p { font-size: 0.82rem; line-height: 1.85; color: rgba(255, 255, 255, 0.7); font-weight: 300; }
 
+  .organizers { position: relative; z-index: 1; padding: 80px 48px; max-width: 1100px; margin: 0 auto; text-align: center; }
+  .org-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; text-align: left; margin-top: 40px; }
+  .org-card { display: grid; grid-template-columns: 120px 1fr; gap: 22px; padding: 26px; background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 22px; box-shadow: 0 12px 40px rgba(31, 38, 135, 0.2); }
+  .org-photo { aspect-ratio: 1/1; background-size: cover; background-position: center; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.2); }
+  .org-mark { aspect-ratio: 1/1; border-radius: 14px; background: linear-gradient(135deg, #f093fb 0%, #4c6ef5 100%); color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; box-shadow: 0 0 30px rgba(240, 147, 251, 0.4); }
+  .org-initial { font-family: 'Inter', sans-serif; font-size: 2.8rem; font-weight: 700; line-height: 1; }
+  .org-en { font-family: 'Inter', sans-serif; font-size: 0.58rem; letter-spacing: 0.22em; opacity: 0.85; }
+  .org-kind { font-family: 'Inter', sans-serif; font-size: 0.62rem; letter-spacing: 0.22em; color: rgba(255,255,255,0.75); display: block; margin-bottom: 8px; }
+  .org-body h3 { font-size: 1.1rem; color: #fff; font-weight: 700; margin-bottom: 4px; }
+  .org-role { font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-bottom: 12px; }
+  .org-body p { font-size: 0.82rem; line-height: 1.95; color: rgba(255, 255, 255, 0.78); font-weight: 300; }
+  .org-link { display: inline-block; margin-top: 12px; font-family: 'Inter', sans-serif; font-size: 0.78rem; color: #f9a8d4; border-bottom: 1px solid #f9a8d4; padding-bottom: 2px; }
+  .org-link:hover { color: #fff; border-color: #fff; }
+
   .cta { position: relative; z-index: 1; padding: 80px 48px 110px; max-width: 900px; margin: 0 auto; }
   .cta-card { padding: 64px 44px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.22); border-radius: 32px; box-shadow: 0 20px 60px rgba(31, 38, 135, 0.3); text-align: center; }
   .cta-label { font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255, 255, 255, 0.7); margin-bottom: 22px; }
@@ -234,6 +274,9 @@ import { community, numbers, features, news, images, gallery } from '../../../da
     .stats { flex-direction: column; align-items: flex-start; gap: 16px; }
     .stat-divider { display: none; }
     .f-cards, .news ul { grid-template-columns: 1fr; }
+    .organizers { padding: 60px 22px; }
+    .org-grid { grid-template-columns: 1fr; }
+    .org-card { grid-template-columns: 90px 1fr; gap: 16px; padding: 22px; }
     .cta-card { padding: 40px 22px; }
     .orb { filter: blur(60px); opacity: 0.4; }
     .orb-1, .orb-2, .orb-3, .orb-4 { width: 240px; height: 240px; }

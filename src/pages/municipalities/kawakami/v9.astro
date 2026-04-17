@@ -1,6 +1,6 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import { community, numbers, features, news, images } from '../../../data/kawakami.ts';
+import { community, numbers, features, news, images, profile, organization } from '../../../data/kawakami.ts';
 ---
 
 <Base title={`${community.name} (ポップカラフル案) — ${community.prefecture}${community.village}`}>
@@ -94,6 +94,34 @@ import { community, numbers, features, news, images } from '../../../data/kawaka
             </li>
           ))}
         </ul>
+      </div>
+    </section>
+
+    <section class="organizers">
+      <div class="organizers-inner">
+        <div class="sec-label"><span class="sec-num">04</span><span class="sec-tag">Organizers</span></div>
+        <h2 class="org-h">運営は、<span class="marker">この2者。</span></h2>
+        <div class="org-grid">
+          <article class="org-card org-card-pink">
+            <div class="org-photo"><img src={profile.photo} alt="" /></div>
+            <div class="org-body">
+              <span class="org-kind">Person</span>
+              <h3>{profile.handle}</h3>
+              <p class="org-role">{profile.role}</p>
+              <p>{profile.bio}</p>
+            </div>
+          </article>
+          <article class="org-card org-card-blue">
+            <div class="org-mark"><span class="org-initial">A</span><span class="org-en">{organization.nameEn}</span></div>
+            <div class="org-body">
+              <span class="org-kind">Company</span>
+              <h3>{organization.name}</h3>
+              <p class="org-role">{organization.role}</p>
+              <p>{organization.bio}</p>
+              <a href={organization.url} target="_blank" rel="noopener" class="org-link">{organization.urlLabel} →</a>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -211,6 +239,25 @@ import { community, numbers, features, news, images } from '../../../data/kawaka
   .news h3 { font-size: 1.05rem; font-weight: 900; padding: 4px 22px 8px; line-height: 1.5; }
   .news p { font-size: 0.84rem; line-height: 1.85; padding: 0 22px 22px; font-weight: 500; }
 
+  .organizers { background: #FFF8E7; padding: 100px 36px; position: relative; z-index: 1; border-top: 3px solid #1a1a3a; }
+  .organizers-inner { max-width: 1100px; margin: 0 auto; }
+  .org-h { font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.45; font-weight: 900; margin-bottom: 36px; }
+  .org-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .org-card { display: grid; grid-template-columns: 130px 1fr; gap: 22px; padding: 26px; border: 3px solid #1a1a3a; border-radius: 26px; box-shadow: 5px 5px 0 #1a1a3a; }
+  .org-card-pink { background: #FFEAF2; }
+  .org-card-blue { background: #D6E9FF; }
+  .org-photo { aspect-ratio: 1/1; border: 3px solid #1a1a3a; border-radius: 16px; overflow: hidden; }
+  .org-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .org-mark { aspect-ratio: 1/1; border: 3px solid #1a1a3a; border-radius: 16px; background: linear-gradient(135deg, #4D96FF 0%, #1a1a3a 100%); color: #FFF8E7; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+  .org-initial { font-family: 'Inter', sans-serif; font-size: 3rem; font-weight: 900; line-height: 1; }
+  .org-en { font-family: 'Inter', sans-serif; font-size: 0.6rem; letter-spacing: 0.22em; opacity: 0.85; }
+  .org-kind { font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 800; color: #1a1a3a; background: #FFD93D; border: 2px solid #1a1a3a; border-radius: 999px; padding: 2px 10px; display: inline-block; margin-bottom: 8px; }
+  .org-card h3 { font-size: 1.25rem; font-weight: 900; margin-bottom: 4px; }
+  .org-role { font-size: 0.78rem; font-weight: 600; color: #3a3a5a; margin-bottom: 12px; }
+  .org-card p { font-size: 0.85rem; line-height: 1.85; font-weight: 500; }
+  .org-link { display: inline-block; margin-top: 12px; font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 700; padding: 6px 14px; border: 2px solid #1a1a3a; background: #FFD93D; color: #1a1a3a; border-radius: 999px; }
+  .org-link:hover { background: #FF6B9D; color: #FFF8E7; }
+
   .cta { background: #FFEAF2; padding: 140px 36px; text-align: center; position: relative; overflow: hidden; z-index: 1; border-top: 3px solid #1a1a3a; }
   .cta-inner { max-width: 720px; margin: 0 auto; position: relative; }
   .cta-star { position: absolute; pointer-events: none; }
@@ -236,5 +283,8 @@ import { community, numbers, features, news, images } from '../../../data/kawaka
     .about, .features, .news, .cta { padding: 70px 22px; }
     .stats { grid-template-columns: repeat(2, 1fr); }
     .cards, .news ul { grid-template-columns: 1fr; }
+    .organizers { padding: 70px 22px; }
+    .org-grid { grid-template-columns: 1fr; gap: 16px; }
+    .org-card { grid-template-columns: 90px 1fr; gap: 16px; padding: 20px; }
   }
 </style>

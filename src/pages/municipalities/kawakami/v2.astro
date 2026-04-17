@@ -1,6 +1,6 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import { community, numbers, concepts, features, news, steps, images } from '../../../data/kawakami.ts';
+import { community, numbers, concepts, features, news, steps, images, profile, organization } from '../../../data/kawakami.ts';
 ---
 
 <Base title={`${community.name} (アースカラー案) — ${community.prefecture}${community.village}`}>
@@ -90,6 +90,37 @@ import { community, numbers, concepts, features, news, steps, images } from '../
       </div>
     </section>
 
+    <section class="organizers">
+      <div class="org-inner">
+        <span class="about-tag">Organizers</span>
+        <h2>運営。</h2>
+        <div class="org-grid">
+          <article class="org-card">
+            <div class="org-photo" style={`background-image: url('${profile.photo}');`}></div>
+            <div class="org-body">
+              <span class="org-kind">PERSON</span>
+              <h3>{profile.handle}</h3>
+              <p class="org-role">{profile.role}</p>
+              <p>{profile.bio}</p>
+            </div>
+          </article>
+          <article class="org-card org-card-company">
+            <div class="org-mark">
+              <span class="org-initial">A</span>
+              <span class="org-en">{organization.nameEn}</span>
+            </div>
+            <div class="org-body">
+              <span class="org-kind">COMPANY</span>
+              <h3>{organization.name}</h3>
+              <p class="org-role">{organization.role}</p>
+              <p>{organization.bio}</p>
+              <a href={organization.url} target="_blank" rel="noopener" class="org-link">{organization.urlLabel} →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="cta" style={`background-image: linear-gradient(165deg, rgba(245, 240, 232, 0.92) 0%, rgba(232, 220, 200, 0.92) 100%), url('${images.event2}');`}>
       <div class="cta-content">
         <h2>土地の声を聴き、<br />人をつなぎ、未来を耕す。</h2>
@@ -164,6 +195,22 @@ import { community, numbers, concepts, features, news, steps, images } from '../
   .news li h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; line-height: 1.5; }
   .news li p { font-size: 0.82rem; line-height: 1.7; color: #888; font-weight: 300; }
 
+  .organizers { padding: 110px 48px; background: #f5f0e8; }
+  .org-inner { max-width: 1100px; margin: 0 auto; }
+  .organizers h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; margin-bottom: 48px; line-height: 1.6; }
+  .org-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .org-card { display: grid; grid-template-columns: 140px 1fr; gap: 24px; padding: 28px; background: #fff; border-radius: 10px; border: 1px solid rgba(139, 105, 20, 0.12); }
+  .org-photo { aspect-ratio: 1/1; background-size: cover; background-position: center; border-radius: 8px; }
+  .org-mark { aspect-ratio: 1/1; border-radius: 8px; background: linear-gradient(135deg, #8B6914 0%, #3a3228 100%); color: #f5f0e8; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+  .org-initial { font-family: 'Noto Serif JP', serif; font-size: 3.4rem; font-weight: 900; line-height: 1; }
+  .org-en { font-family: 'Inter', sans-serif; font-size: 0.62rem; letter-spacing: 0.22em; opacity: 0.85; }
+  .org-kind { font-family: 'Inter', sans-serif; font-size: 0.62rem; letter-spacing: 0.22em; color: #8B6914; display: block; margin-bottom: 8px; }
+  .org-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; }
+  .org-role { font-size: 0.78rem; color: #888; margin-bottom: 10px; }
+  .org-card p { font-size: 0.82rem; line-height: 1.95; color: #666; font-weight: 300; }
+  .org-link { display: inline-block; margin-top: 12px; font-family: 'Inter', sans-serif; font-size: 0.78rem; color: #8B6914; border-bottom: 1px solid #8B6914; padding-bottom: 2px; }
+  .org-link:hover { opacity: 0.6; }
+
   .cta { padding: 150px 48px; text-align: center; background-size: cover; background-position: center; }
   .cta h2 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; line-height: 1.5; margin-bottom: 18px; }
   .cta > .cta-content > p { font-size: 0.9rem; color: #888; margin-bottom: 44px; font-weight: 300; }
@@ -185,6 +232,9 @@ import { community, numbers, concepts, features, news, steps, images } from '../
     .about-grid { grid-template-columns: 1fr; }
     .news { padding: 70px 22px; }
     .news li a { grid-template-columns: 1fr; }
+    .organizers { padding: 70px 22px; }
+    .org-grid { grid-template-columns: 1fr; }
+    .org-card { grid-template-columns: 90px 1fr; gap: 18px; padding: 22px; }
     .cta { padding: 100px 22px; }
   }
 </style>

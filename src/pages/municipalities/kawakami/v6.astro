@@ -1,6 +1,6 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import { community, numbers, features, news, images } from '../../../data/kawakami.ts';
+import { community, numbers, features, news, images, profile, organization } from '../../../data/kawakami.ts';
 ---
 
 <Base title={`${community.name} (ブルータリズム案) — ${community.prefecture}${community.village}`}>
@@ -85,6 +85,31 @@ import { community, numbers, features, news, images } from '../../../data/kawaka
           </li>
         ))}
       </ul>
+    </section>
+
+    <section class="organizers">
+      <div class="section-head"><span class="section-num">[04]</span><span class="section-label">ORGANIZERS // 運営</span></div>
+      <div class="org-grid">
+        <article class="org-card">
+          <div class="org-photo" style={`background-image: url('${profile.photo}');`}></div>
+          <div class="org-body">
+            <span class="org-kind">[ PERSON ]</span>
+            <h3>{profile.handle}</h3>
+            <p class="org-role">{profile.role}</p>
+            <p>{profile.bio}</p>
+          </div>
+        </article>
+        <article class="org-card org-card-alt">
+          <div class="org-mark"><span class="org-initial">A</span><span class="org-en">{organization.nameEn}</span></div>
+          <div class="org-body">
+            <span class="org-kind">[ COMPANY ]</span>
+            <h3>{organization.name}</h3>
+            <p class="org-role">{organization.role}</p>
+            <p>{organization.bio}</p>
+            <a href={organization.url} target="_blank" rel="noopener" class="org-link">→ {organization.urlLabel}</a>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section class="cta">
@@ -187,6 +212,23 @@ import { community, numbers, features, news, images } from '../../../data/kawaka
   .news h3 { font-size: 1rem; font-weight: 900; margin-bottom: 6px; line-height: 1.5; }
   .news p { font-size: 0.82rem; line-height: 1.85; font-weight: 500; }
 
+  .organizers { padding: 90px 32px; background: #faf8f0; border-top: 6px solid #000; }
+  .organizers .section-head { max-width: 1200px; margin: 0 auto 40px; }
+  .org-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 1200px; margin: 0 auto; }
+  .org-card { display: grid; grid-template-columns: 150px 1fr; gap: 22px; padding: 24px; background: #FFEE00; border: 4px solid #000; box-shadow: 8px 8px 0 #FF4500; }
+  .org-card-alt { background: #0044FF; color: #faf8f0; box-shadow: 8px 8px 0 #FFEE00; }
+  .org-photo { aspect-ratio: 1/1; background-size: cover; background-position: center; border: 3px solid #000; }
+  .org-mark { aspect-ratio: 1/1; background: #000; color: #FFEE00; border: 3px solid #000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+  .org-initial { font-family: 'Inter', monospace; font-size: 3.4rem; font-weight: 900; line-height: 1; }
+  .org-en { font-family: monospace; font-size: 0.6rem; letter-spacing: 0.2em; }
+  .org-kind { font-family: monospace; font-size: 0.72rem; font-weight: 700; display: block; margin-bottom: 8px; }
+  .org-card h3 { font-size: 1.3rem; font-weight: 900; margin-bottom: 4px; }
+  .org-role { font-family: monospace; font-size: 0.75rem; margin-bottom: 12px; }
+  .org-card p { font-size: 0.85rem; line-height: 1.85; font-weight: 500; }
+  .org-link { display: inline-block; margin-top: 12px; font-family: monospace; font-size: 0.85rem; font-weight: 900; padding: 6px 12px; border: 2px solid #000; background: #faf8f0; color: #000; }
+  .org-card-alt .org-link { background: #FFEE00; color: #000; }
+  .org-link:hover { background: #FF4500; color: #faf8f0; }
+
   .cta { background: #FFEE00; border-top: 6px solid #000; position: relative; overflow: hidden; }
   .cta-marquee { background: #000; color: #FFEE00; padding: 14px 0; overflow: hidden; white-space: nowrap; font-family: monospace; font-size: 1.05rem; font-weight: 900; letter-spacing: 0.1em; border-bottom: 4px solid #000; }
   .cta-marquee span { display: inline-block; animation: marquee 22s linear infinite; }
@@ -221,6 +263,9 @@ import { community, numbers, features, news, images } from '../../../data/kawaka
     .features-grid { grid-template-columns: 1fr; }
     .news { padding: 60px 20px; }
     .news li a { grid-template-columns: 1fr; }
+    .organizers { padding: 60px 20px; }
+    .org-grid { grid-template-columns: 1fr; }
+    .org-card { grid-template-columns: 90px 1fr; gap: 16px; }
     .cta-inner { padding: 60px 20px; }
     .btn-cta { padding: 18px 24px; font-size: 0.92rem; }
   }
