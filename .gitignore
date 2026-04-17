@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# claude code local settings
+.claude/
+
+# package-lock (regenerated via npm install)
+package-lock.json

@@ -1,0 +1,710 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="グラスモーフィズム — 地域おこし協力隊DAO">
+  <div class="glass">
+    <!-- Background Orbs -->
+    <div class="bg-orbs" aria-hidden="true">
+      <span class="orb orb-1"></span>
+      <span class="orb orb-2"></span>
+      <span class="orb orb-3"></span>
+      <span class="orb orb-4"></span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-inner">
+        <div class="nav-logo">
+          <span class="logo-mark"></span>
+          協力隊DAO
+        </div>
+        <div class="nav-links">
+          <a href="#about">知る</a>
+          <a href="#vision">理念</a>
+          <a href="#join">参加する</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-card">
+        <span class="hero-tag">REGIONAL REVITALIZATION × DAO</span>
+        <h1>
+          つながりが、<br />
+          <span class="grad-text">地域を変える。</span>
+        </h1>
+        <p class="hero-desc">
+          全国の地域おこし協力隊員がDAOでつながる。<br />
+          知恵を共有し、地域の未来を共創する、新しいコミュニティ。
+        </p>
+        <div class="hero-actions">
+          <a href="#join" class="btn-primary">コミュニティに参加する</a>
+          <a href="#about" class="btn-ghost">詳しく見る →</a>
+        </div>
+      </div>
+      <div class="hero-float">
+        <div class="float-card float-card-1">
+          <span class="float-dot"></span>
+          <div>
+            <div class="float-k">47</div>
+            <div class="float-v">都道府県</div>
+          </div>
+        </div>
+        <div class="float-card float-card-2">
+          <span class="float-dot float-dot-2"></span>
+          <div>
+            <div class="float-k">DAO</div>
+            <div class="float-v">分散型コミュニティ</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+      <div class="about-card">
+        <div class="section-head">
+          <span class="section-num">01</span>
+          <span class="section-title">About</span>
+        </div>
+        <h2>地域おこし協力隊DAO<br />とは何か</h2>
+        <p>
+          地域おこし協力隊の経験者・現役隊員・地域に関わるすべての人をつなぐ、分散型コミュニティです。株式会社あるやうむが運営し、Web3の仕組みを活用しながら、地域課題の解決と新しい価値の創造に取り組んでいます。
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-num">47</span>
+            <span class="stat-label">都道府県</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">DAO</span>
+            <span class="stat-label">自律分散型組織</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">共創</span>
+            <span class="stat-label">隊員 × 地域 × テック</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vision -->
+    <section id="vision" class="vision">
+      <div class="section-head section-head-center">
+        <span class="section-num">02</span>
+        <span class="section-title">Vision</span>
+      </div>
+      <h2 class="vision-title">
+        一人の力は小さくとも、<br />
+        <span class="grad-text">つながれば、地域は動く。</span>
+      </h2>
+      <div class="vision-cards">
+        <div class="v-card">
+          <div class="v-num">01</div>
+          <h3>知恵の共有</h3>
+          <p>各地の協力隊員が持つノウハウ・経験を、コミュニティ全体の資産として蓄積し、次の挑戦者へ受け継ぐ。</p>
+        </div>
+        <div class="v-card">
+          <div class="v-num">02</div>
+          <h3>越境する協働</h3>
+          <p>地域の壁を越えて、共通の課題を持つ隊員同士がプロジェクトを立ち上げ、協働する場を提供する。</p>
+        </div>
+        <div class="v-card">
+          <div class="v-num">03</div>
+          <h3>持続する仕組み</h3>
+          <p>DAOの仕組みを活用し、特定の誰かに依存しない、持続可能なコミュニティ運営を実現する。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="join" class="cta">
+      <div class="cta-card">
+        <p class="cta-label">Join the DAO</p>
+        <h2>
+          あなたの地域の物語を、<br />
+          <span class="grad-text">ここから始めよう。</span>
+        </h2>
+        <p class="cta-desc">
+          まずはコミュニティを覗いてみませんか。<br />
+          隊員も、これから目指す人も歓迎します。
+        </p>
+        <a href="#" class="btn-primary btn-large">コミュニティに参加する</a>
+        <p class="cta-note">運営: 株式会社あるやうむ</p>
+      </div>
+    </section>
+
+    <a href="/" class="back-link">← デザイン一覧に戻る</a>
+  </div>
+</Base>
+
+<style>
+  .glass {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #ffffff;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 20% 10%, #4c6ef5 0%, transparent 45%),
+      radial-gradient(ellipse at 80% 20%, #c084fc 0%, transparent 45%),
+      radial-gradient(ellipse at 70% 80%, #f093fb 0%, transparent 45%),
+      linear-gradient(135deg, #1e1b4b 0%, #312e81 35%, #5b21b6 70%, #9333ea 100%);
+  }
+
+  /* Background orbs */
+  .bg-orbs {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    animation: float 18s ease-in-out infinite;
+  }
+
+  .orb-1 {
+    width: 420px;
+    height: 420px;
+    background: #667eea;
+    top: -120px;
+    left: -100px;
+  }
+
+  .orb-2 {
+    width: 520px;
+    height: 520px;
+    background: #f093fb;
+    top: 30%;
+    right: -180px;
+    animation-delay: -6s;
+  }
+
+  .orb-3 {
+    width: 360px;
+    height: 360px;
+    background: #764ba2;
+    bottom: 10%;
+    left: 20%;
+    animation-delay: -3s;
+  }
+
+  .orb-4 {
+    width: 280px;
+    height: 280px;
+    background: #60a5fa;
+    bottom: -80px;
+    right: 25%;
+    animation-delay: -9s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(40px, -30px) scale(1.05); }
+    66% { transform: translate(-30px, 40px) scale(0.95); }
+  }
+
+  /* Nav */
+  .nav {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1100px;
+    padding: 14px 24px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+  }
+
+  .logo-mark {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #f093fb, #4c6ef5);
+    box-shadow: 0 0 16px rgba(240, 147, 251, 0.6);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    font-size: 0.85rem;
+  }
+
+  .nav-links a {
+    color: rgba(255, 255, 255, 0.85);
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: #fff;
+  }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 40px;
+    padding: 140px 48px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-card {
+    padding: 48px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 28px;
+    box-shadow: 0 20px 60px rgba(31, 38, 135, 0.25);
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    margin-bottom: 28px;
+  }
+
+  .hero-card h1 {
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
+  }
+
+  .grad-text {
+    background: linear-gradient(135deg, #f9a8d4 0%, #c084fc 50%, #93c5fd 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    line-height: 2;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    margin-bottom: 36px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #f093fb 0%, #764ba2 100%);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 24px rgba(240, 147, 251, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(240, 147, 251, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-large {
+    padding: 18px 44px;
+    font-size: 0.95rem;
+  }
+
+  .btn-ghost {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.88rem;
+    letter-spacing: 0.05em;
+    padding: 14px 20px;
+    transition: color 0.3s;
+  }
+
+  .btn-ghost:hover {
+    color: #fff;
+  }
+
+  .hero-float {
+    position: relative;
+    height: 400px;
+  }
+
+  .float-card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 24px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25);
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .float-card-1 {
+    top: 40px;
+    left: 20px;
+  }
+
+  .float-card-2 {
+    bottom: 40px;
+    right: 10px;
+    animation-delay: -4s;
+  }
+
+  .float-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #86efac;
+    box-shadow: 0 0 12px #86efac;
+  }
+
+  .float-dot-2 {
+    background: #f9a8d4;
+    box-shadow: 0 0 12px #f9a8d4;
+  }
+
+  .float-k {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+
+  .float-v {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.1em;
+  }
+
+  /* Section heads */
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .section-head-center {
+    justify-content: center;
+  }
+
+  .section-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.15em;
+  }
+
+  .section-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    padding: 4px 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+  }
+
+  /* About */
+  .about {
+    position: relative;
+    z-index: 1;
+    padding: 80px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .about-card {
+    padding: 64px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 32px;
+    box-shadow: 0 20px 60px rgba(31, 38, 135, 0.2);
+  }
+
+  .about-card h2 {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.6;
+    margin-bottom: 28px;
+    font-weight: 700;
+  }
+
+  .about-card p {
+    font-size: 0.95rem;
+    line-height: 2.1;
+    color: rgba(255, 255, 255, 0.82);
+    font-weight: 300;
+    max-width: 680px;
+  }
+
+  .stats {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .stat-num {
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #fff 0%, #c7d2fe 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.05em;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Vision */
+  .vision {
+    position: relative;
+    z-index: 1;
+    padding: 120px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .vision-title {
+    font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+    line-height: 1.6;
+    margin: 24px auto 64px;
+    font-weight: 700;
+    max-width: 820px;
+  }
+
+  .vision-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    text-align: left;
+  }
+
+  .v-card {
+    padding: 36px 32px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    box-shadow: 0 12px 40px rgba(31, 38, 135, 0.2);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+  }
+
+  .v-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .v-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .v-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+
+  .v-card p {
+    font-size: 0.85rem;
+    line-height: 1.95;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 300;
+  }
+
+  /* CTA */
+  .cta {
+    position: relative;
+    z-index: 1;
+    padding: 80px 48px 120px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .cta-card {
+    padding: 72px 48px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 32px;
+    box-shadow: 0 20px 60px rgba(31, 38, 135, 0.3);
+    text-align: center;
+  }
+
+  .cta-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 24px;
+  }
+
+  .cta-card h2 {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.6;
+    margin-bottom: 28px;
+    font-weight: 700;
+  }
+
+  .cta-desc {
+    font-size: 0.9rem;
+    line-height: 2;
+    color: rgba(255, 255, 255, 0.78);
+    font-weight: 300;
+    margin-bottom: 40px;
+  }
+
+  .cta-note {
+    margin-top: 28px;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.05em;
+  }
+
+  /* Back link */
+  .back-link {
+    position: relative;
+    z-index: 1;
+    display: block;
+    text-align: center;
+    padding: 32px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.65);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transition: color 0.3s;
+  }
+
+  .back-link:hover {
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .nav { top: 12px; left: 12px; right: 12px; }
+    .nav-inner { padding: 12px 18px; }
+    .nav-links { gap: 18px; font-size: 0.78rem; }
+    .nav-logo { font-size: 0.85rem; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 110px 20px 60px;
+      gap: 24px;
+      min-height: auto;
+    }
+    .hero-card { padding: 32px 24px; border-radius: 22px; }
+    .hero-actions { flex-direction: column; align-items: stretch; gap: 12px; }
+    .hero-actions .btn-primary { text-align: center; }
+    .hero-actions .btn-ghost { text-align: center; }
+    .hero-float { height: 240px; }
+    .float-card { padding: 14px 18px; border-radius: 16px; }
+    .float-card-1 { top: 20px; left: 10px; }
+    .float-card-2 { bottom: 20px; right: 10px; }
+    .float-k { font-size: 1.15rem; }
+
+    .about { padding: 40px 20px; }
+    .about-card { padding: 36px 24px; border-radius: 22px; }
+    .stats { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .stat-divider { display: none; }
+
+    .vision { padding: 60px 20px; }
+    .vision-cards { grid-template-columns: 1fr; gap: 16px; }
+    .v-card { padding: 28px 24px; border-radius: 18px; }
+
+    .cta { padding: 40px 20px 60px; }
+    .cta-card { padding: 48px 24px; border-radius: 22px; }
+
+    .orb { filter: blur(60px); opacity: 0.4; }
+    .orb-1 { width: 280px; height: 280px; }
+    .orb-2 { width: 320px; height: 320px; }
+    .orb-3 { width: 240px; height: 240px; }
+    .orb-4 { width: 200px; height: 200px; }
+  }
+</style>
+

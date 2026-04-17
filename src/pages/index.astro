@@ -1,17 +1,193 @@
 ---
+import Base from '../layouts/Base.astro';
 
+const drafts = [
+  { n: '01', href: '/v1-wa-modern', title: '和モダン',         desc: '縦書き・墨色・余白の美学。日本の伝統美をベースに、地域の格と奥行きを表現。', tag: '伝統 × 革新',   accent: '#2d2926' },
+  { n: '02', href: '/v2-earth',     title: 'アースカラー',     desc: '土・緑・暖色にテクスチャを重ねた有機的な世界観。地域の温もりを前面に。',     tag: '自然 × 共創',   accent: '#8B6914' },
+  { n: '03', href: '/v3-minimal',   title: 'ミニマル白',       desc: '大胆な余白とタイポグラフィだけで勝負。情報を削ぎ落とした洗練。',               tag: '余白 × 言葉',   accent: '#111' },
+  { n: '04', href: '/v4-dark',      title: 'ダークモード',     desc: 'DAO/Web3の先進性を漆黒の背景で表現。テクノロジーと地域の融合。',               tag: '先端 × 地域',   accent: '#00D4AA' },
+  { n: '05', href: '/v5-editorial', title: '雑誌エディトリアル', desc: '非対称グリッド・大胆な文字組み。読み物としてのLPを目指す。',                   tag: '編集 × 物語',   accent: '#C84B31' },
+  { n: '06', href: '/v6-brutalism', title: 'ネオブルータリズム', desc: '太罫線・原色・ハードシャドウ。AIっぽさの対極、生々しく強いインパクト。',       tag: '粗野 × 鮮烈',   accent: '#FF4500' },
+  { n: '07', href: '/v7-glass',     title: 'グラスモーフィズム', desc: '透過とぼかし、空と山のグラデ。未来的で幻想的なWeb3の気配。',                   tag: '浮遊 × 透明',   accent: '#764ba2' },
+  { n: '08', href: '/v8-showa',     title: '昭和レトロ',       desc: '地方広報誌のような手触り。マスタードと深緑、角ばった装飾、ノスタルジー。',     tag: '郷愁 × 印刷',   accent: '#8b2e1a' },
+  { n: '09', href: '/v9-pop',       title: 'ポップカラフル',   desc: 'ビビッド原色・有機曲線・若年層向けの遊び心。明るくて親しみやすい。',           tag: '遊び × 鮮やか', accent: '#FF6B9D' },
+  { n: '10', href: '/v10-photo',    title: 'フォトジャーナル', desc: '写真主役のドキュメンタリー風。National Geographic的な重みと落ち着き。',        tag: '写真 × 編集',   accent: '#5c7b6d' },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base title="地域おこし協力隊DAO — デザイン案一覧">
+  <main class="index">
+    <div class="header">
+      <p class="eyebrow">Design Drafts</p>
+      <h1>地域おこし協力隊DAO<br /><span>LP デザイン案</span></h1>
+      <p class="subtitle">10の方向性を比較できます。選んだ案をベースに、各自治体向けの本番LPに展開していきます。</p>
+      <a href="/municipalities" class="prod-link">
+        <span class="prod-label">本番LP</span>
+        <span class="prod-text">各自治体に特化したLPを見る →</span>
+      </a>
+    </div>
+
+    <div class="grid">
+      {drafts.map((d) => (
+        <a href={d.href} class="card" style={`--accent: ${d.accent};`}>
+          <span class="number">{d.n}</span>
+          <h2>{d.title}</h2>
+          <p>{d.desc}</p>
+          <span class="tag">{d.tag}</span>
+        </a>
+      ))}
+    </div>
+  </main>
+</Base>
+
+<style>
+  .index {
+    min-height: 100vh;
+    background: #fafaf8;
+    padding: 80px 40px;
+    font-family: 'Noto Sans JP', sans-serif;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .header { margin-bottom: 60px; }
+
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.3;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+  }
+
+  h1 span {
+    font-weight: 300;
+    font-size: 0.5em;
+    color: #888;
+    display: block;
+    margin-top: 8px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .subtitle {
+    color: #777;
+    font-size: 0.92rem;
+    max-width: 620px;
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+
+  .prod-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background: #1a1a1a;
+    border-radius: 100px;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  .prod-link:hover {
+    transform: translateY(-2px);
+    background: #2f5d3d;
+  }
+  .prod-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #fafaf8;
+    padding: 3px 8px;
+    border: 1px solid rgba(250,250,248,0.3);
+    border-radius: 2px;
+  }
+  .prod-text {
+    font-size: 0.85rem;
+    color: #fafaf8;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid #e8e8e4;
+    border-radius: 12px;
+    padding: 36px 28px;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s ease;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  }
+  .card:hover::before { transform: scaleX(1); }
+
+  .number {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #ccc;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .card h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+  }
+
+  .card p {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+
+  .tag {
+    font-size: 0.72rem;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 12px;
+    border-radius: 100px;
+    display: inline-block;
+    font-weight: 500;
+  }
+
+  @media (max-width: 600px) {
+    .index { padding: 40px 20px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>

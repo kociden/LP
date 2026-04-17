@@ -1,0 +1,885 @@
+---
+import Base from '../../layouts/Base.astro';
+
+/**
+ * === 素材差し替え用データ ===
+ * ここを書き換えれば本文・画像・数字を差し替えられます。
+ * 画像は CSS グラデのプレースホルダー（`--photo-*`）を使用。
+ * 実写に差し替える場合は `background: url('/images/xxx.jpg')` に置換。
+ */
+const village = {
+  name: '川上村',
+  nameEn: 'KAWAKAMI',
+  prefecture: '長野県',
+  prefectureEn: 'NAGANO',
+  tagline: 'レタスと、星と、<br />千曲川の源流。',
+  subTagline: '長野県南佐久郡 川上村',
+  heroLead:
+    '標高1,100mの高原に、日本一のレタス畑が広がる。千曲川はここから始まる。' +
+    '小さな村で、あたらしい挑戦が育ちはじめている。',
+
+  // 数字で見る（公表値を想定。差し替え可）
+  numbers: [
+    { value: '1,185', unit: 'm', label: '平均標高', note: '高冷地ならではの気候' },
+    { value: '209', unit: 'km²', label: '総面積', note: '長野県内でも広い村' },
+    { value: '約4,000', unit: '人', label: '人口', note: '小さな村だからこそ見える' },
+    { value: '日本一', unit: '', label: 'レタス産地', note: '夏秋レタスの生産量' },
+  ],
+
+  // 村の見どころ・アセット
+  highlights: [
+    {
+      id: '01',
+      title: '高原野菜のプロフェッショナル',
+      body: '冷涼な気候と火山灰土壌を活かしたレタス、白菜、キャベツの生産。若手就農者が多いことでも知られ、農業×デジタルの余白が大きい。',
+      photo: 'field',
+    },
+    {
+      id: '02',
+      title: '千曲川源流の森',
+      body: '長野・新潟を貫く千曲川（信濃川）の最初の一滴が湧き出す村。水源の森を守る営みが、暮らしの根っこにある。',
+      photo: 'river',
+    },
+    {
+      id: '03',
+      title: '星空とクライミング',
+      body: '小川山・廻り目平。国内屈指のフリークライミングの聖地であり、標高の高さから「宇宙に近い村」としても知られる。',
+      photo: 'sky',
+    },
+  ],
+
+  // 協力隊DAOで取り組むテーマ（川上村特化）
+  missions: [
+    {
+      tag: 'AGRI × TECH',
+      title: '農業と暮らしの次をつくる',
+      body: '高原野菜の担い手を増やし、若手就農者のネットワークをオンチェーンで可視化。ノウハウを地域資産として残す。',
+    },
+    {
+      tag: 'COMMONS',
+      title: '源流の森をみんなで守る',
+      body: '千曲川源流域の自然資本を、DAOの仕組みでファンディング・モニタリング。関係人口をコミットメントで可視化する。',
+    },
+    {
+      tag: 'CULTURE',
+      title: '星と岩のコミュニティ',
+      body: 'クライマー・天文ファン・登山者が集う通年コミュニティを、関係人口の受け皿として育てる。',
+    },
+  ],
+
+  // 先輩協力隊員の声（プレースホルダー）
+  voices: [
+    {
+      name: '— 素材差し替え予定',
+      role: '川上村 地域おこし協力隊',
+      body:
+        '（ここに実際の隊員インタビューが入ります。例：「東京から移住して3年。' +
+        '最初はレタスの匂いに驚いたけれど、今ではこの空気がないと眠れない。」）',
+    },
+    {
+      name: '— 素材差し替え予定',
+      role: '川上村役場 担当者',
+      body:
+        '（ここに行政側のメッセージが入ります。DAOと連携する意図、村として期待していること、' +
+        '応募を検討している人へのメッセージなど。）',
+    },
+  ],
+
+  cta: {
+    primary: { label: '応募・詳細を見る', href: '#' },
+    secondary: { label: '運営に相談する', href: '#' },
+  },
+
+  // 協力先・連携
+  partners: {
+    operator: '株式会社あるやうむ',
+    government: '川上村役場',
+    note: '本サイトは地域おこし協力隊DAOの取り組みの一環として運営されています。',
+  },
+};
+---
+
+<Base
+  title={`${village.name} — 地域おこし協力隊DAO`}
+  description={`${village.prefecture}${village.name}で地域おこし協力隊DAOに参加する。標高1,100m、レタス畑と千曲川の源流の村。`}
+>
+  <div class="page">
+    <!-- Nav -->
+    <nav class="nav">
+      <a class="nav-logo" href="/">
+        <span class="logo-mark">協</span>
+        <span class="logo-text">地域おこし協力隊DAO</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">村について</a>
+        <a href="#numbers">数字で見る</a>
+        <a href="#missions">取り組み</a>
+        <a href="#voices">声</a>
+        <a href="#join" class="nav-cta">参加する</a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-photo photo-hero" aria-hidden="true"></div>
+      <div class="hero-grain" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="hero-eyebrow">
+          <span>{village.prefectureEn}</span>
+          <span class="sep">／</span>
+          <span>{village.nameEn}</span>
+        </p>
+        <h1 class="hero-title" set:html={village.tagline}></h1>
+        <p class="hero-sub">{village.subTagline}</p>
+        <p class="hero-lead">{village.heroLead}</p>
+        <div class="hero-actions">
+          <a href={village.cta.primary.href} class="btn btn-primary">
+            {village.cta.primary.label}
+          </a>
+          <a href="#about" class="btn btn-ghost">村を知る</a>
+        </div>
+      </div>
+      <div class="hero-meta">
+        <span class="hero-meta-label">Landing Page</span>
+        <span class="hero-meta-val">v1.0 / 2026</span>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+      <div class="about-grid">
+        <div class="section-label">
+          <span class="num">01</span>
+          <span class="title">About Kawakami</span>
+        </div>
+        <div class="about-body">
+          <h2>
+            標高1,100m、<br />
+            日本でいちばん<br />レタスに近い村。
+          </h2>
+          <p>
+            {village.prefecture}南佐久郡に位置する{village.name}は、
+            高冷地の気候を活かした高原野菜の一大産地として知られています。
+            千曲川の最初の一滴が湧き出る水源の村であり、
+            小川山・廻り目平に代表される自然のスケール感が、
+            ここでの暮らしや仕事のものさしをそっと変えていきます。
+          </p>
+          <p class="note">
+            このページは素材差し替え前のβ版です。写真・数字・コピーは後日、
+            {village.partners.government}・{village.partners.operator}
+            より提供された素材に差し替わります。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Numbers -->
+    <section id="numbers" class="numbers">
+      <div class="section-label">
+        <span class="num">02</span>
+        <span class="title">By the Numbers</span>
+      </div>
+      <h2 class="numbers-title">数字で見る、{village.name}。</h2>
+      <ul class="numbers-grid">
+        {village.numbers.map((n) => (
+          <li class="number-card">
+            <p class="number-label">{n.label}</p>
+            <p class="number-value">
+              {n.value}
+              {n.unit && <span class="number-unit">{n.unit}</span>}
+            </p>
+            <p class="number-note">{n.note}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Highlights -->
+    <section id="highlights" class="highlights">
+      <div class="section-label">
+        <span class="num">03</span>
+        <span class="title">Village Highlights</span>
+      </div>
+      <h2 class="highlights-title">
+        レタス、源流、星。<br />
+        小さな村に、大きなスケール。
+      </h2>
+      <div class="highlights-grid">
+        {village.highlights.map((h) => (
+          <article class="highlight">
+            <div class={`photo photo-${h.photo}`} aria-hidden="true"></div>
+            <p class="highlight-id">{h.id}</p>
+            <h3>{h.title}</h3>
+            <p>{h.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Missions -->
+    <section id="missions" class="missions">
+      <div class="missions-inner">
+        <div class="section-label light">
+          <span class="num">04</span>
+          <span class="title">DAO × Kawakami</span>
+        </div>
+        <h2>
+          地域おこし協力隊DAOで、<br />
+          {village.name}と取り組むこと。
+        </h2>
+        <p class="missions-lead">
+          全国の協力隊員・経験者・地域に関わる人が分散型でつながる、
+          地域おこし協力隊DAO。{village.name}では特に、
+          農業・自然資本・関係人口の3つのテーマで活動していきます。
+        </p>
+        <div class="mission-cards">
+          {village.missions.map((m, i) => (
+            <article class="mission">
+              <p class="mission-tag">{m.tag}</p>
+              <h3>{m.title}</h3>
+              <p>{m.body}</p>
+              <span class="mission-index">{String(i + 1).padStart(2, '0')}</span>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Voices -->
+    <section id="voices" class="voices">
+      <div class="section-label">
+        <span class="num">05</span>
+        <span class="title">Voices</span>
+      </div>
+      <h2 class="voices-title">村のひとの、ことば。</h2>
+      <div class="voices-grid">
+        {village.voices.map((v) => (
+          <blockquote class="voice">
+            <p class="voice-body">“{v.body}”</p>
+            <footer>
+              <p class="voice-name">{v.name}</p>
+              <p class="voice-role">{v.role}</p>
+            </footer>
+          </blockquote>
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="join" class="cta">
+      <div class="cta-photo photo-cta" aria-hidden="true"></div>
+      <div class="cta-inner">
+        <p class="cta-eyebrow">Join the DAO</p>
+        <h2>
+          あなたのものさしで、<br />
+          {village.name}を見てほしい。
+        </h2>
+        <p class="cta-lead">
+          地域おこし協力隊DAOは、一人で始める挑戦を、ひとりにしない仕組みです。
+          {village.name}で、小さく始めてみませんか。
+        </p>
+        <div class="cta-actions">
+          <a href={village.cta.primary.href} class="btn btn-primary btn-lg">
+            {village.cta.primary.label}
+          </a>
+          <a href={village.cta.secondary.href} class="btn btn-ghost btn-lg">
+            {village.cta.secondary.label}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-name">{village.prefecture}{village.name}</p>
+          <p class="footer-note">{village.partners.note}</p>
+        </div>
+        <div class="footer-meta">
+          <p>運営：{village.partners.operator}</p>
+          <p>協力：{village.partners.government}</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <a href="/municipalities">← 自治体一覧</a>
+        <a href="/">デザイン案一覧</a>
+      </div>
+    </footer>
+  </div>
+</Base>
+
+<style>
+  /* ============ Tokens ============ */
+  .page {
+    --ink: #1c1c1a;
+    --ink-soft: #5a5955;
+    --ink-mute: #8c8a85;
+    --paper: #f6f3ec;
+    --paper-soft: #ece8dd;
+    --line: #d9d3c5;
+    --accent: #2f5d3d;       /* 川上の深緑 */
+    --accent-warm: #b88a3e;  /* レタス畑の土 */
+
+    --photo-hero: linear-gradient(165deg, #6e8c6f 0%, #3f5b42 45%, #1e2c22 100%);
+    --photo-field: linear-gradient(160deg, #9fb57a 0%, #6e8c4f 50%, #3d5630 100%);
+    --photo-river: linear-gradient(175deg, #a7bfc1 0%, #6e8a8c 50%, #2d3d40 100%);
+    --photo-sky:   linear-gradient(200deg, #2b3a6e 0%, #1a2143 50%, #0c0f22 100%);
+    --photo-cta:   linear-gradient(160deg, #3d5b42 0%, #1f2d24 100%);
+
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    min-height: 100vh;
+  }
+
+  .photo-hero { background: var(--photo-hero); }
+  .photo-field { background: var(--photo-field); }
+  .photo-river { background: var(--photo-river); }
+  .photo-sky { background: var(--photo-sky); }
+  .photo-cta { background: var(--photo-cta); }
+
+  /* ============ Nav ============ */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    background: rgba(246, 243, 236, 0.82);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(217, 211, 197, 0.5);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+  .logo-mark {
+    display: inline-flex;
+    width: 28px; height: 28px;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: var(--paper);
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-family: 'Noto Serif JP', serif;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    font-size: 0.82rem;
+    align-items: center;
+  }
+  .nav-links a {
+    color: var(--ink-soft);
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    padding: 8px 18px;
+    background: var(--accent);
+    color: var(--paper) !important;
+    border-radius: 100px;
+  }
+
+  /* ============ Hero ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    align-items: center;
+    padding: 140px 48px 80px;
+    overflow: hidden;
+  }
+  .hero-photo {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 100%);
+  }
+  .hero-grain {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.18;
+    mix-blend-mode: overlay;
+    background:
+      radial-gradient(1px 1px at 25% 30%, #fff, transparent),
+      radial-gradient(1px 1px at 70% 60%, #fff, transparent),
+      radial-gradient(1px 1px at 45% 85%, #fff, transparent);
+    background-size: 3px 3px;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    color: var(--paper);
+  }
+  .hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    margin-bottom: 32px;
+    opacity: 0.85;
+  }
+  .hero-eyebrow .sep { margin: 0 10px; opacity: 0.5; }
+  .hero-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(2.4rem, 6vw, 4.6rem);
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 28px;
+    letter-spacing: 0.02em;
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+    letter-spacing: 0.15em;
+    opacity: 0.9;
+    margin-bottom: 24px;
+  }
+  .hero-lead {
+    font-size: 1rem;
+    line-height: 2;
+    max-width: 560px;
+    opacity: 0.9;
+    margin-bottom: 40px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .hero-meta {
+    position: absolute;
+    right: 48px; bottom: 40px;
+    z-index: 2;
+    font-family: 'Inter', sans-serif;
+    color: rgba(246, 243, 236, 0.6);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-align: right;
+  }
+  .hero-meta-label { display: block; margin-bottom: 4px; }
+
+  /* ============ Buttons ============ */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 28px;
+    font-size: 0.88rem;
+    letter-spacing: 0.1em;
+    border-radius: 100px;
+    transition: transform 0.25s, opacity 0.25s, background 0.25s, color 0.25s;
+  }
+  .btn-lg { padding: 18px 36px; font-size: 0.95rem; }
+  .btn-primary {
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .btn-primary:hover { transform: translateY(-2px); opacity: 0.92; }
+  .btn-ghost {
+    border: 1px solid rgba(246, 243, 236, 0.6);
+    color: var(--paper);
+  }
+  .btn-ghost:hover {
+    background: rgba(246, 243, 236, 0.1);
+  }
+  /* CTA section uses paper background, adjust ghost */
+  .cta .btn-ghost { border-color: rgba(28,28,26,0.4); color: var(--ink); }
+  .cta .btn-ghost:hover { background: rgba(28,28,26,0.05); }
+
+  /* ============ Section Label ============ */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 32px;
+  }
+  .section-label .num {
+    padding: 4px 10px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--ink-soft);
+  }
+  .section-label.light .num {
+    border-color: rgba(246,243,236,0.3);
+    color: rgba(246,243,236,0.7);
+  }
+  .section-label.light { color: rgba(246,243,236,0.55); }
+
+  /* ============ About ============ */
+  .about {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 140px 48px;
+    border-top: 1px solid var(--line);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 80px;
+  }
+  .about-body h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .about-body p {
+    font-size: 0.95rem;
+    line-height: 2.1;
+    color: var(--ink-soft);
+    max-width: 620px;
+    margin-bottom: 20px;
+  }
+  .about-body .note {
+    font-size: 0.78rem;
+    color: var(--ink-mute);
+    padding: 14px 18px;
+    background: var(--paper-soft);
+    border-left: 3px solid var(--accent-warm);
+    line-height: 1.9;
+    margin-top: 24px;
+  }
+
+  /* ============ Numbers ============ */
+  .numbers {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 48px 140px;
+  }
+  .numbers-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    font-weight: 700;
+    margin-bottom: 48px;
+  }
+  .numbers-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .number-card {
+    padding: 36px 28px;
+    border-right: 1px solid var(--line);
+  }
+  .number-card:last-child { border-right: none; }
+  .number-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 14px;
+  }
+  .number-value {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .number-unit {
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-left: 4px;
+    color: var(--ink-soft);
+  }
+  .number-note {
+    font-size: 0.78rem;
+    color: var(--ink-mute);
+    line-height: 1.7;
+  }
+
+  /* ============ Highlights ============ */
+  .highlights {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 48px 140px;
+  }
+  .highlights-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.7;
+    margin-bottom: 64px;
+  }
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .highlight .photo {
+    aspect-ratio: 4 / 5;
+    margin-bottom: 24px;
+  }
+  .highlight-id {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: var(--accent-warm);
+    margin-bottom: 10px;
+  }
+  .highlight h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .highlight p {
+    font-size: 0.88rem;
+    line-height: 2;
+    color: var(--ink-soft);
+  }
+
+  /* ============ Missions ============ */
+  .missions {
+    background: #1f2a22;
+    color: var(--paper);
+    padding: 140px 48px;
+  }
+  .missions-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .missions h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+  .missions-lead {
+    font-size: 0.95rem;
+    line-height: 2.1;
+    color: rgba(246,243,236,0.7);
+    max-width: 680px;
+    margin-bottom: 64px;
+  }
+  .mission-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .mission {
+    position: relative;
+    padding: 36px 28px;
+    border: 1px solid rgba(246,243,236,0.12);
+    border-radius: 2px;
+    background: rgba(246,243,236,0.03);
+  }
+  .mission-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: #9db89c;
+    margin-bottom: 16px;
+  }
+  .mission h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+  .mission p {
+    font-size: 0.86rem;
+    line-height: 2;
+    color: rgba(246,243,236,0.65);
+  }
+  .mission-index {
+    position: absolute;
+    top: 24px; right: 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    color: rgba(246,243,236,0.3);
+    letter-spacing: 0.1em;
+  }
+
+  /* ============ Voices ============ */
+  .voices {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 140px 48px;
+  }
+  .voices-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 700;
+    margin-bottom: 56px;
+  }
+  .voices-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+  .voice {
+    padding: 36px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+  .voice-body {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.05rem;
+    line-height: 2;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .voice footer { border-top: 1px solid var(--line); padding-top: 18px; }
+  .voice-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+  .voice-role {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: var(--ink-mute);
+  }
+
+  /* ============ CTA ============ */
+  .cta {
+    position: relative;
+    padding: 140px 48px;
+    overflow: hidden;
+    background: var(--paper-soft);
+  }
+  .cta-photo {
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+  }
+  .cta-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .cta-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+  .cta h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.8rem, 3.8vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+  .cta-lead {
+    font-size: 0.95rem;
+    line-height: 2.1;
+    color: var(--ink-soft);
+    margin-bottom: 44px;
+  }
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  /* ============ Footer ============ */
+  .footer {
+    padding: 64px 48px 48px;
+    background: var(--ink);
+    color: rgba(246,243,236,0.6);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto 48px;
+  }
+  .footer-name {
+    color: var(--paper);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .footer-note {
+    font-size: 0.8rem;
+    line-height: 2;
+  }
+  .footer-meta {
+    font-size: 0.82rem;
+    line-height: 2;
+    text-align: right;
+  }
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(246,243,236,0.1);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+  }
+  .footer-bottom a {
+    color: rgba(246,243,236,0.6);
+    transition: color 0.25s;
+  }
+  .footer-bottom a:hover { color: var(--paper); }
+
+  /* ============ Responsive ============ */
+  @media (max-width: 900px) {
+    .nav { padding: 14px 20px; }
+    .nav-links { gap: 16px; font-size: 0.78rem; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero { padding: 120px 24px 60px; }
+    .hero-meta { display: none; }
+    .about, .numbers, .highlights, .missions, .voices, .cta {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    .about { padding-top: 80px; padding-bottom: 80px; }
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+    .number-card:nth-child(2) { border-right: none; }
+    .number-card:nth-child(1), .number-card:nth-child(2) {
+      border-bottom: 1px solid var(--line);
+    }
+    .highlights, .missions, .voices, .cta {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+    .highlights-grid, .mission-cards, .voices-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-meta { text-align: left; }
+    .footer-bottom { flex-direction: column; gap: 12px; }
+  }
+</style>
