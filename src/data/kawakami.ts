@@ -14,6 +14,7 @@ export const community = {
   district: '南佐久郡',
   operator: '地域おこし協力隊員 つっちー',
   operatorOrg: '株式会社あるやうむ',
+  operatorOrgUrl: 'https://alyawmu.com/',
   catchcopy: 'レタスから、宇宙まで。<br />日本一の村と、つながる。',
   catchcopyAlt1: '100人で耕す、川上村のこれから。',
   catchcopyAlt2: '川上村ファン、はじめませんか？',
@@ -32,9 +33,20 @@ export const profile = {
   role: '川上村 地域おこし協力隊員',
   org: 'レタスペビレッジ運営',
   photo: '/images/kawakami/cooperation_person_profile.png',
-  bio: 'レタスペビレッジの運営を担う川上村 地域おこし協力隊員。村内外をつなぎ、関係人口を増やす活動を日々発信しています。',
+  bio: '川上村の地域おこし協力隊員として、レタスペビレッジの運営を担当。村内外をつなぎ、関係人口を増やす活動を日々発信しています。',
   message: '「ちょっと気になる」くらいで、大丈夫。まずはLINEオープンチャットを覗いてみてください。川上村と、あなたの関わり方を、一緒に探していきましょう。',
   tags: ['関係人口', 'DAOコミュニティ', '川上村', 'レタス・宇宙'],
+};
+
+// 運営会社プロフィール
+export const organization = {
+  name: '株式会社あるやうむ',
+  nameEn: 'ARUYAUMU INC.',
+  role: '運営会社 ／ 地域おこし協力隊DAO',
+  url: 'https://alyawmu.com/',
+  urlLabel: 'alyawmu.com',
+  bio: '地域おこし協力隊DAOおよびレタスペビレッジの運営会社。地域と人をつなぐコミュニティの運営、Web3を活用した地域経済の実験に取り組んでいます。',
+  tags: ['運営会社', '地域 × Web3', 'コミュニティ運営'],
 };
 
 export const numbers = [
