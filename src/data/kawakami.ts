@@ -131,14 +131,14 @@ export const faqs = [
 
 // 10案カタログ（/municipalities/kawakami/index.astro で使用）
 export const variants = [
-  { n: '01', slug: 'v1-wa-modern',  title: '和モダン',         desc: '縦書き・墨色・余白の美学。日本の伝統的な格と奥行きで川上村を表現。', accent: '#2d2926' },
-  { n: '02', slug: 'v2-earth',      title: 'アースカラー',     desc: '土・緑・暖色のテクスチャ。レタス畑と高原の温もりを前面に。',       accent: '#8B6914' },
-  { n: '03', slug: 'v3-minimal',    title: 'ミニマル白',       desc: '大胆な余白とタイポグラフィだけ。情報を削ぎ落とした洗練。',         accent: '#111' },
-  { n: '04', slug: 'v4-dark',       title: 'ダークモード',     desc: '宇宙の漆黒。星空とDAO/Web3の先進性を融合。',                       accent: '#00D4AA' },
-  { n: '05', slug: 'v5-editorial',  title: '雑誌エディトリアル', desc: '非対称グリッド・大胆な文字組み。ドキュメンタリー風の読み物。',     accent: '#C84B31' },
-  { n: '06', slug: 'v6-brutalism',  title: 'ネオブルータリズム', desc: '太罫線・原色・ハードシャドウ。生々しく強いインパクト。',           accent: '#FF4500' },
-  { n: '07', slug: 'v7-glass',      title: 'グラスモーフィズム', desc: '透過とぼかし、空と山のグラデ。未来的で幻想的。',                   accent: '#764ba2' },
-  { n: '08', slug: 'v8-showa',      title: '昭和レトロ',       desc: '地方広報誌のような手触り。マスタード×深緑のノスタルジー。',         accent: '#8b2e1a' },
-  { n: '09', slug: 'v9-pop',        title: 'ポップカラフル',   desc: 'ビビッド原色・有機曲線。明るく親しみやすい。',                     accent: '#FF6B9D' },
-  { n: '10', slug: 'v10-photo',     title: 'フォトジャーナル', desc: '写真主役のドキュメンタリー風。重みと落ち着き。',                   accent: '#5c7b6d' },
+  { n: '01', slug: 'v1',  title: '和モダン',         desc: '縦書き・墨色・余白の美学。日本の伝統的な格と奥行きで川上村を表現。', accent: '#2d2926' },
+  { n: '02', slug: 'v2',  title: 'アースカラー',     desc: '土・緑・暖色のテクスチャ。レタス畑と高原の温もりを前面に。',       accent: '#8B6914' },
+  { n: '03', slug: 'v3',  title: 'ミニマル白',       desc: '大胆な余白とタイポグラフィだけ。情報を削ぎ落とした洗練。',         accent: '#111' },
+  { n: '04', slug: 'v4',  title: 'ダークモード',     desc: '宇宙の漆黒。星空とDAO/Web3の先進性を融合。',                       accent: '#00D4AA' },
+  { n: '05', slug: 'v5',  title: '雑誌エディトリアル', desc: '非対称グリッド・大胆な文字組み。ドキュメンタリー風の読み物。',     accent: '#C84B31' },
+  { n: '06', slug: 'v6',  title: 'ネオブルータリズム', desc: '太罫線・原色・ハードシャドウ。生々しく強いインパクト。',           accent: '#FF4500' },
+  { n: '07', slug: 'v7',  title: 'グラスモーフィズム', desc: '透過とぼかし、空と山のグラデ。未来的で幻想的。',                   accent: '#764ba2' },
+  { n: '08', slug: 'v8',  title: '昭和レトロ',       desc: '地方広報誌のような手触り。マスタード×深緑のノスタルジー。',         accent: '#8b2e1a' },
+  { n: '09', slug: 'v9',  title: 'ポップカラフル',   desc: 'ビビッド原色・有機曲線。明るく親しみやすい。',                     accent: '#FF6B9D' },
+  { n: '10', slug: 'v10', title: 'フォトジャーナル', desc: '写真主役のドキュメンタリー風。重みと落ち着き。',                   accent: '#5c7b6d' },
 ];

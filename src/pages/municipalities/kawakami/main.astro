@@ -1,6 +1,6 @@
 ---
-import Base from '../../layouts/Base.astro';
-import { community, numbers, concepts, features, news, steps, faqs, images, gallery } from '../../data/kawakami.ts';
+import Base from '../../../layouts/Base.astro';
+import { community, numbers, concepts, features, news, steps, faqs, images, gallery } from '../../../data/kawakami.ts';
 ---
 
 <Base
@@ -254,6 +254,10 @@ import { community, numbers, concepts, features, news, steps, faqs, images, gall
           <p>{community.prefecture}{community.district} {community.village}</p>
           <p>© 2026 Lettuce-Ville Community</p>
         </div>
+      </div>
+      <div class="footer-bottom">
+        <a href="/municipalities/kawakami">← デザイン10案カタログ</a>
+        <a href="/municipalities">自治体一覧</a>
       </div>
     </footer>
 
@@ -562,6 +566,9 @@ import { community, numbers, concepts, features, news, steps, faqs, images, gall
   .footer-name { color: var(--cream); font-weight: 900; font-size: 1.05rem; margin-bottom: 8px; display: inline-flex; align-items: center; gap: 8px; }
   .footer-note { font-size: 0.8rem; line-height: 1.8; }
   .footer-meta { text-align: right; font-size: 0.78rem; line-height: 1.9; font-family: 'Inter', sans-serif; letter-spacing: 0.05em; }
+  .footer-bottom { max-width: 1100px; margin: 24px auto 0; padding-top: 20px; border-top: 1px solid rgba(251,247,238,0.1); display: flex; justify-content: space-between; font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .footer-bottom a { color: rgba(251,247,238,0.7); transition: color 0.25s; }
+  .footer-bottom a:hover { color: var(--cream); }
 
   /* ============ Sticky CTA ============ */
   .sticky-cta { display: none; position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 90; text-align: center; background: var(--lettuce-500); color: #fff; font-weight: 700; padding: 16px; border-radius: 999px; border: 2px solid var(--lettuce-900); box-shadow: 5px 5px 0 var(--lettuce-900); }
