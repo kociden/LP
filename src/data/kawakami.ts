@@ -31,7 +31,7 @@ export const profile = {
   realName: '',                              // 差し替え予定
   role: '川上村 地域おこし協力隊員',
   org: 'レタスペビレッジ運営',
-  photo: '/images/kawakami/cooperation_person.png',
+  photo: '/images/kawakami/cooperation_person_profile.png',
   bio: 'レタスペビレッジの運営を担う川上村 地域おこし協力隊員。村内外をつなぎ、関係人口を増やす活動を日々発信しています。',
   message: '「ちょっと気になる」くらいで、大丈夫。まずはLINEオープンチャットを覗いてみてください。川上村と、あなたの関わり方を、一緒に探していきましょう。',
   tags: ['関係人口', 'DAOコミュニティ', '川上村', 'レタス・宇宙'],
@@ -69,7 +69,7 @@ export const concepts = [
 
 // 画像アセット（public/images/kawakami/ 配下）
 export const images = {
-  hero:      '/images/kawakami/cooperation_person.png', // 協力隊員・コミュニティ主役
+  hero:      '/images/kawakami/cooperation_person_profile.png', // 協力隊員・コミュニティ主役
   cosmos:    '/images/kawakami/astro_event.jpg',        // 宇宙イベント
   idea:      '/images/kawakami/kawakami_idea.jpg',      // 村について考える会議
   meeting1:  '/images/kawakami/hybrid_meeting.jpg',
