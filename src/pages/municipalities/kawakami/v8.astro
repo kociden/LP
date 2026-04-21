@@ -1,6 +1,17 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import { community, numbers, features, news, images, gallery, profile, organization } from '../../../data/kawakami.ts';
+import { community, numbers, concepts, features, news, images, profile, organization } from '../../../data/kawakami.ts';
+
+const villageGallery = [
+  { src: images.lettuceField, caption: 'レタス畑と夕陽' },
+  { src: images.nature,       caption: '川上村の自然' },
+  { src: images.scenary,      caption: '村の風景' },
+  { src: images.dog,          caption: '村の犬' },
+  { src: images.mascot,       caption: 'マスコット' },
+  { src: images.station,      caption: '駅' },
+  { src: images.marche,       caption: 'マルシェ川上' },
+  { src: images.dokitaiken,   caption: '土器体験' },
+];
 ---
 
 <Base title={`${community.name} (昭和レトロ案) — ${community.prefecture}${community.village}`}>
@@ -18,7 +29,7 @@ import { community, numbers, features, news, images, gallery, profile, organizat
     </nav>
 
     <section class="hero">
-      <div class="hero-stamp"><span class="hero-stamp-text">NO. 令和八年</span></div>
+      <div class="hero-stamp"><span class="hero-stamp-text">VOL. 01 / 2026</span></div>
       <div class="hero-inner">
         <div class="hero-kicker">
           <span class="hero-kicker-line"></span>
@@ -31,32 +42,69 @@ import { community, numbers, features, news, images, gallery, profile, organizat
         </h1>
         <div class="hero-divider"><span class="hero-divider-dot">◆</span></div>
         <p class="hero-desc">
-          {community.lead}<br />
-          村内議員・村外大学生・参加者が集う、新時代の自律分散型コミュニティ。
+          長野県川上村のDAOコミュニティ「レタスペビレッジ」。<br />
+          村のイベント・体験・人との出会いを通じて、<br />
+          川上村と関わる仲間を増やしていく場所です。
         </p>
         <div class="hero-cta-row">
-          <a href={community.lineUrl} class="hero-cta">▶ LINEで入会する</a>
-          <a href="#about" class="hero-sub-link">詳しく知る ／</a>
+          <a href={community.lineUrl} class="hero-cta">
+            <span class="hero-cta-badge">無料</span>
+            <span class="hero-cta-label">LINEオープンチャットに参加する</span>
+            <span class="hero-cta-arrow">▶</span>
+          </a>
+          <a href="#about" class="hero-sub-link">まずは詳しく見る</a>
+        </div>
+        <p class="hero-cta-note">※ 匿名で参加可能 ／ いつでも退出できます</p>
+      </div>
+      <div class="hero-photos">
+        <div class="hero-photo hero-photo-main" style={`background-image: url('${images.lettuceField}');`}>
+          <span class="hero-photo-cap">日本一のレタス畑</span>
+        </div>
+        <div class="hero-photo hero-photo-sub" style={`background-image: url('${images.heroSub}');`}>
+          <span class="hero-photo-cap">宇宙イベントの夜</span>
         </div>
       </div>
-      <div class="hero-photo" style={`background-image: url('${images.hero}');`}></div>
       <div class="hero-marquee">
         <span>HOMETOWN ★ KAWAKAMI ★ DAO ★ LETTUCE ★ COSMOS ★ SINCE 2025 ★ HOMETOWN ★ KAWAKAMI ★ DAO ★ LETTUCE ★ COSMOS ★ SINCE 2025 ★</span>
       </div>
     </section>
 
+    <section id="village" class="village">
+      <div class="village-header">
+        <span class="section-num">No. 1</span>
+        <h2 class="about-h2">川上村ってどんなところ？</h2>
+        <div class="about-rule"></div>
+        <p class="village-lead">長野県の東端、標高1,100mの高原に広がる小さな村。<br />レタスと、宇宙と、千曲川源流の村です。</p>
+      </div>
+      <div class="village-grid">
+        {concepts.map((c, i) => (
+          <article class="village-card">
+            <div class="village-card-img" style={`background-image: url('${i === 0 ? images.lettuceField : images.cosmos}');`}></div>
+            <div class="village-card-body">
+              <span class="village-card-icon">{c.icon}</span>
+              <h3>{c.title}</h3>
+              <p>{c.body}</p>
+              <ul>
+                {c.bullets.map((b) => (<li>・{b}</li>))}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
     <section id="about" class="about">
       <div class="about-header">
-        <span class="section-num">［第壱号］</span>
-        <h2 class="about-h2">{community.name}<br />とは何ぞや</h2>
+        <span class="section-num">No. 2</span>
+        <h2 class="about-h2">{community.name}<br />とは？</h2>
         <div class="about-rule"></div>
       </div>
       <div class="about-body">
-        <p class="about-lead">{community.lead}{community.operator}が運営し、村役場・村内外メンバーと連携して活動しております。</p>
+        <p class="about-lead">{community.lead}{community.operator}が運営し、村役場・村内外のメンバーと連携して活動しています。</p>
         <div class="about-stats">
           {numbers.slice(0, 3).map((n, i) => (
             <div class="stat">
-              <span class="stat-cap">{['一', '二', '三'][i]}</span>
+              <span class="stat-cap">{['01', '02', '03'][i]}</span>
               <span class="stat-num">{n.value}{n.unit}</span>
               <span class="stat-label">{n.label}</span>
             </div>
@@ -67,15 +115,15 @@ import { community, numbers, features, news, images, gallery, profile, organizat
 
     <section class="features">
       <div class="features-header">
-        <span class="section-num light">［第弐号］</span>
-        <h2 class="features-h2">できる事ども。</h2>
+        <span class="section-num light">No. 3</span>
+        <h2 class="features-h2">レタスペビレッジでできること。</h2>
       </div>
       <div class="features-grid">
         {features.map((f, i) => (
           <article class="f-card">
             {f.image && <div class="f-img" style={`background-image: url('${f.image}');`}></div>}
             <div class="f-card-head">
-              <span class="f-card-num">{['壱','弐','参','肆','伍','陸'][i]}</span>
+              <span class="f-card-num">{String(i + 1).padStart(2, '0')}</span>
               <span class="f-card-icon">{f.icon}</span>
             </div>
             <h3>{f.title}</h3>
@@ -85,10 +133,27 @@ import { community, numbers, features, news, images, gallery, profile, organizat
       </div>
     </section>
 
+    <section id="gallery" class="gallery">
+      <div class="gallery-header">
+        <span class="section-num">No. 4</span>
+        <h2 class="about-h2">川上村の風景。</h2>
+        <div class="about-rule"></div>
+        <p class="gallery-lead">レタス畑、自然、村の日常。写真で感じる川上村。</p>
+      </div>
+      <div class="gallery-grid">
+        {villageGallery.map((p) => (
+          <figure class="gallery-item">
+            <div class="gallery-img" style={`background-image: url('${p.src}');`}></div>
+            <figcaption>{p.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
     <section id="news" class="news">
       <div class="news-header">
-        <span class="section-num">［第参号］</span>
-        <h2 class="about-h2">便り。</h2>
+        <span class="section-num">No. 5</span>
+        <h2 class="about-h2">お知らせ。</h2>
       </div>
       <ul>
         {news.map((n) => (
@@ -108,21 +173,33 @@ import { community, numbers, features, news, images, gallery, profile, organizat
 
     <section class="organizers">
       <div class="organizers-header">
-        <span class="section-num">［第肆号］</span>
+        <span class="section-num">No. 6</span>
         <h2 class="about-h2">運営について。</h2>
       </div>
       <div class="org-grid">
-        <article class="org-card">
+        <article class="org-card org-card-person">
           <div class="org-photo" style={`background-image: url('${profile.photo}');`}></div>
           <div class="org-body">
             <span class="org-kind">PERSON</span>
             <h3>{profile.handle}</h3>
             <p class="org-role">{profile.role}</p>
             <p>{profile.bio}</p>
+            <div class="org-sub">
+              <span class="org-sub-title">得意領域</span>
+              <ul class="org-tags">
+                {profile.specialties.map((s) => (<li>{s}</li>))}
+              </ul>
+            </div>
+            <div class="org-sub">
+              <span class="org-sub-title">川上村での活動</span>
+              <ul class="org-activities">
+                {profile.activities.map((a) => (<li>・{a}</li>))}
+              </ul>
+            </div>
           </div>
         </article>
         <article class="org-card">
-          <div class="org-mark"><span class="org-initial">A</span><span class="org-en">{organization.nameEn}</span></div>
+          <div class="org-logo" style={`background-image: url('${organization.logo}');`}></div>
           <div class="org-body">
             <span class="org-kind">COMPANY</span>
             <h3>{organization.name}</h3>
@@ -137,9 +214,14 @@ import { community, numbers, features, news, images, gallery, profile, organizat
     <section class="cta">
       <div class="cta-inner">
         <div class="cta-badge"><span class="cta-badge-outer">★</span><span class="cta-badge-text">入会募集中</span><span class="cta-badge-outer">★</span></div>
-        <h2 class="cta-h2">あなたを、<br />101人目の村人に。</h2>
-        <p class="cta-desc">関係人口を共に耕す寄合へ、<br />どうぞお気軽にお越しください。</p>
-        <a href={community.lineUrl} class="cta-button"><span>LINEオープンチャットに参加する</span><span class="cta-button-arrow">▶</span></a>
+        <h2 class="cta-h2">あなたを、<br />101人目の仲間に。</h2>
+        <p class="cta-desc">一緒に川上村を盛り上げるコミュニティへ、<br />お気軽にどうぞ。</p>
+        <a href={community.lineUrl} class="cta-button">
+          <span class="cta-button-free">無料</span>
+          <span>LINEオープンチャットに参加する</span>
+          <span class="cta-button-arrow">▶</span>
+        </a>
+        <p class="cta-note-sub">※ 匿名で参加可能 ／ いつでも退出できます</p>
         <div class="cta-meta">
           <div class="cta-meta-line"></div>
           <p class="cta-note">運営 ／ {community.operator}</p>
@@ -148,6 +230,12 @@ import { community, numbers, features, news, images, gallery, profile, organizat
     </section>
 
     <a href={`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}municipalities/kawakami`} class="back-link">← 川上村LP一覧に戻る</a>
+
+    <a href={community.lineUrl} class="sticky-line-cta">
+      <span class="sticky-line-free">無料</span>
+      <span class="sticky-line-label">LINEオープンチャットに参加</span>
+      <span class="sticky-line-arrow">▶</span>
+    </a>
   </div>
 </Base>
 
@@ -178,10 +266,18 @@ import { community, numbers, features, news, images, gallery, profile, organizat
   .hero-divider-dot { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #f4ead5; padding: 0 12px; color: #2d4a2b; }
   .hero-desc { font-size: 0.96rem; line-height: 2.05; color: #4a3828; max-width: 520px; }
   .hero-cta-row { display: flex; align-items: center; gap: 22px; margin-top: 36px; flex-wrap: wrap; }
-  .hero-cta { display: inline-block; padding: 14px 30px; background: #2d4a2b; color: #f4ead5; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.12em; border: 2px solid #2a1f15; box-shadow: 5px 5px 0 #2a1f15; transition: all 0.15s; }
-  .hero-cta:hover { transform: translate(3px, 3px); box-shadow: 2px 2px 0 #2a1f15; background: #8b2e1a; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 12px; padding: 18px 28px 18px 20px; background: #8b2e1a; color: #f4ead5; font-weight: 700; font-size: 1.02rem; letter-spacing: 0.08em; border: 2px solid #2a1f15; box-shadow: 6px 6px 0 #2a1f15, 10px 10px 0 #d4923c; transition: all 0.15s; }
+  .hero-cta:hover { transform: translate(3px, 3px); box-shadow: 3px 3px 0 #2a1f15, 5px 5px 0 #d4923c; }
+  .hero-cta-badge { background: #d4923c; color: #2a1f15; padding: 5px 11px; font-size: 0.76rem; letter-spacing: 0.14em; border: 2px solid #2a1f15; }
+  .hero-cta-label { white-space: nowrap; }
+  .hero-cta-arrow { font-size: 0.8rem; opacity: 0.85; }
+  .hero-cta-note { margin-top: 14px; font-size: 0.78rem; color: #4a3828; letter-spacing: 0.04em; }
   .hero-sub-link { font-weight: 700; font-size: 0.82rem; letter-spacing: 0.12em; color: #2a1f15; border-bottom: 2px solid #2a1f15; padding-bottom: 4px; }
-  .hero-photo { aspect-ratio: 4/5; max-width: 380px; justify-self: center; background-size: cover; background-position: center; border: 4px solid #2a1f15; box-shadow: 8px 8px 0 #d4923c; filter: sepia(0.15); }
+  .hero-photos { display: grid; gap: 22px; justify-self: center; width: 100%; max-width: 420px; }
+  .hero-photo { position: relative; aspect-ratio: 4/5; width: 100%; background-size: cover; background-position: center; border: 4px solid #2a1f15; filter: sepia(0.15); }
+  .hero-photo-main { box-shadow: 8px 8px 0 #d4923c; }
+  .hero-photo-sub { aspect-ratio: 16/10; box-shadow: 6px 6px 0 #8b2e1a; margin-left: 30px; }
+  .hero-photo-cap { position: absolute; bottom: 8px; left: 8px; background: rgba(42, 31, 21, 0.88); color: #d4923c; font-size: 0.72rem; font-weight: 700; padding: 5px 11px; letter-spacing: 0.12em; }
   .hero-marquee { grid-column: 1 / -1; margin: 50px -32px 0; background: #8b2e1a; color: #f4ead5; padding: 12px 0; overflow: hidden; white-space: nowrap; border-top: 2px solid #2a1f15; border-bottom: 2px solid #2a1f15; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.22em; }
   .hero-marquee span { display: inline-block; animation: marquee 28s linear infinite; padding-left: 100%; }
   @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
@@ -264,6 +360,52 @@ import { community, numbers, features, news, images, gallery, profile, organizat
   .back-link { display: block; text-align: center; padding: 24px; font-size: 0.82rem; font-weight: 700; background: #2a1f15; color: #f4ead5; letter-spacing: 0.12em; }
   .back-link:hover { background: #8b2e1a; color: #d4923c; }
 
+  /* ─── 川上村紹介セクション ─── */
+  .village { padding: 110px 32px; max-width: 1200px; margin: 0 auto; }
+  .village-header { text-align: center; margin-bottom: 56px; }
+  .village-lead { margin-top: 24px; font-size: 0.95rem; line-height: 2; color: #4a3828; }
+  .village-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .village-card { background: #fff; border: 2px solid #2a1f15; box-shadow: 6px 6px 0 #d4923c; overflow: hidden; display: flex; flex-direction: column; }
+  .village-card-img { aspect-ratio: 16/9; background-size: cover; background-position: center; border-bottom: 2px solid #2a1f15; filter: sepia(0.15); }
+  .village-card-body { padding: 24px 28px 28px; }
+  .village-card-icon { display: block; font-size: 2rem; margin-bottom: 12px; }
+  .village-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 14px; line-height: 1.5; letter-spacing: 0.02em; }
+  .village-card p { font-size: 0.9rem; line-height: 1.95; margin-bottom: 18px; color: #4a3828; }
+  .village-card ul { list-style: none; padding: 16px 0 0; border-top: 2px dashed rgba(42, 31, 21, 0.3); }
+  .village-card li { font-size: 0.86rem; line-height: 1.9; color: #2d4a2b; font-weight: 700; }
+
+  /* ─── ギャラリー ─── */
+  .gallery { padding: 110px 32px; background: repeating-linear-gradient(45deg, rgba(139, 46, 26, 0.04) 0 3px, transparent 3px 12px), #efe1c3; border-top: 3px double #2a1f15; border-bottom: 3px double #2a1f15; }
+  .gallery-header { text-align: center; margin: 0 auto 56px; max-width: 900px; }
+  .gallery-lead { margin-top: 20px; font-size: 0.9rem; line-height: 1.9; color: #4a3828; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto; }
+  .gallery-item { margin: 0; background: #fff; border: 2px solid #2a1f15; box-shadow: 4px 4px 0 #d4923c; transition: transform 0.15s, box-shadow 0.15s; }
+  .gallery-item:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #d4923c; }
+  .gallery-img { aspect-ratio: 4/3; background-size: cover; background-position: center; filter: sepia(0.12); }
+  .gallery-item figcaption { padding: 10px 14px; font-size: 0.78rem; font-weight: 700; color: #2a1f15; letter-spacing: 0.08em; border-top: 2px solid #2a1f15; background: #f4ead5; }
+
+  /* ─── Profile 拡張 ─── */
+  .org-card-person { grid-template-columns: 140px 1fr; }
+  .org-sub { margin-top: 16px; padding-top: 14px; border-top: 1px dashed rgba(42, 31, 21, 0.3); }
+  .org-sub-title { display: block; font-size: 0.72rem; font-weight: 700; color: #8b2e1a; letter-spacing: 0.14em; margin-bottom: 8px; }
+  .org-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0; }
+  .org-tags li { font-size: 0.74rem; padding: 4px 10px; background: #d4923c; color: #2a1f15; border: 1.5px solid #2a1f15; font-weight: 700; letter-spacing: 0.04em; }
+  .org-activities { list-style: none; padding: 0; }
+  .org-activities li { font-size: 0.82rem; line-height: 1.9; color: #4a3828; }
+
+  /* ─── CTA 拡張 ─── */
+  .cta-button-free { background: #d4923c; color: #2a1f15; padding: 5px 11px; font-size: 0.78rem; letter-spacing: 0.14em; border: 2px solid #2a1f15; }
+  .cta-note-sub { margin-top: 20px; font-size: 0.78rem; color: #4a3828; letter-spacing: 0.04em; }
+
+  /* ─── あるやうむロゴ ─── */
+  .org-logo { aspect-ratio: 1/1; background-color: #fff; background-size: 78%; background-position: center; background-repeat: no-repeat; border: 2px solid #2a1f15; }
+
+  /* ─── Sticky LINE CTA ─── */
+  .sticky-line-cta { position: fixed; bottom: 22px; right: 22px; display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px 14px 16px; background: #06C755; color: #fff; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.04em; border: 2px solid #2a1f15; box-shadow: 4px 4px 0 #2a1f15; z-index: 1000; transition: transform 0.15s, box-shadow 0.15s; }
+  .sticky-line-cta:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #2a1f15; }
+  .sticky-line-free { background: #fff; color: #06C755; padding: 3px 9px; font-size: 0.7rem; letter-spacing: 0.1em; border: 1.5px solid #2a1f15; }
+  .sticky-line-arrow { font-size: 0.76rem; }
+
   @media (max-width: 768px) {
     .nav-inner { padding: 12px 18px; }
     .nav-links { gap: 12px; font-size: 0.76rem; }
@@ -283,6 +425,18 @@ import { community, numbers, features, news, images, gallery, profile, organizat
     .org-grid { grid-template-columns: 1fr; }
     .org-card { grid-template-columns: 90px 1fr; gap: 16px; padding: 18px; }
     .cta { padding: 70px 20px; }
-    .cta-button { padding: 16px 26px; font-size: 0.88rem; letter-spacing: 0.1em; }
+    .cta-button { padding: 16px 22px; font-size: 0.84rem; letter-spacing: 0.08em; flex-wrap: wrap; justify-content: center; }
+    .hero-cta { padding: 16px 22px 16px 16px; font-size: 0.94rem; flex-wrap: wrap; justify-content: center; }
+    .hero-cta-label { white-space: normal; }
+    .hero-photos { max-width: 320px; gap: 16px; }
+    .hero-photo-sub { margin-left: 20px; }
+    .village { padding: 60px 20px; }
+    .village-grid { grid-template-columns: 1fr; gap: 22px; }
+    .gallery { padding: 60px 20px; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .gallery-item figcaption { font-size: 0.72rem; padding: 8px 10px; }
+    .org-card-person { grid-template-columns: 1fr; }
+    .org-card-person .org-photo { aspect-ratio: 4/3; max-width: 280px; }
+    .sticky-line-cta { left: 12px; right: 12px; bottom: 12px; justify-content: center; padding: 14px 18px; font-size: 0.86rem; }
   }
 </style>

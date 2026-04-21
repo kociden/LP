@@ -28,15 +28,29 @@ export const community = {
   threadsUrl: '#',
 };
 
-// 運営者プロフィール（素材到着後に写真・文章を差し替え）
+// 運営者プロフィール（※ specialties / activities の中身は土居さんの実情に差し替え推奨）
 export const profile = {
   handle: 'つっちー',
   realName: '',                              // 差し替え予定
   role: '川上村 地域おこし協力隊員',
   org: 'レタスペビレッジ運営',
   photo: `${B}images/kawakami/cooperation_person_profile.png`,
-  bio: '川上村の地域おこし協力隊員として、レタスペビレッジの運営を担当。村内外をつなぎ、関係人口を増やす活動を日々発信しています。',
-  message: '「ちょっと気になる」くらいで、大丈夫。まずはLINEオープンチャットを覗いてみてください。川上村と、あなたの関わり方を、一緒に探していきましょう。',
+  bio: '川上村で地域おこし協力隊として活動しています。村の人と、村外のファンをつなぐDAOコミュニティ「レタスペビレッジ」の立ち上げ・運営を担当しています。',
+  // 得意領域（土居さんの実際の得意分野に差し替えてください）
+  specialties: [
+    'コミュニティ運営',
+    'イベント企画・運営',
+    'SNS発信（Instagram / Threads）',
+    'Web3・DAOの地域活用',
+  ],
+  // 川上村での活動（実際の活動内容に差し替えてください）
+  activities: [
+    'LINEオープンチャットの運営・日々の投稿',
+    '村内外をつなぐ交流イベントの企画',
+    '村の日常・イベントをSNSで発信',
+    '村役場・村内議員・村外メンバーとの連携',
+  ],
+  message: '「ちょっと気になる」くらいで、大丈夫です。まずはLINEオープンチャットを覗いてみてください。川上村とあなたの関わり方を、一緒に見つけていきましょう。',
   tags: ['関係人口', 'DAOコミュニティ', '川上村', 'レタス・宇宙'],
 };
 
@@ -47,6 +61,7 @@ export const organization = {
   role: '運営会社 ／ 地域おこし協力隊DAO',
   url: 'https://alyawmu.com/',
   urlLabel: 'alyawmu.com',
+  logo: `${B}images/aruyaumu_logo.png`,
   bio: '地域おこし協力隊DAOおよびレタスペビレッジの運営会社。地域と人をつなぐコミュニティの運営、Web3を活用した地域経済の実験に取り組んでいます。',
   tags: ['運営会社', '地域 × Web3', 'コミュニティ運営'],
 };
@@ -84,16 +99,29 @@ export const concepts = [
 // 画像アセット（public/images/kawakami/ 配下）
 // 注：cooperation_person_profile.png は Profile セクション専用。ここには含めない。
 export const images = {
-  hero:      `${B}images/kawakami/event.jpg`,              // ヒーロー用の代表画像（イベント風景）
-  cosmos:    `${B}images/kawakami/astro_event.jpg`,        // 宇宙イベント
-  idea:      `${B}images/kawakami/kawakami_idea.jpg`,      // 村について考える会議
-  meeting1:  `${B}images/kawakami/hybrid_meeting.jpg`,
-  meeting2:  `${B}images/kawakami/hybrid_meeting2.jpg`,
-  meeting3:  `${B}images/kawakami/hybrid_meeting3.jpg`,
-  vicemayor: `${B}images/kawakami/vicemayor_meeting.jpg`,  // 副村長との会議＝プレス系
-  event1:    `${B}images/kawakami/event.jpg`,
-  event2:    `${B}images/kawakami/event2.jpg`,
-  event3:    `${B}images/kawakami/event3.jpg`,
+  hero:         `${B}images/kawakami/lettuce_field.jpg`,      // ヒーロー用：夕陽のレタス畑
+  heroSub:      `${B}images/kawakami/astro_event.jpg`,        // ヒーローサブ：宇宙イベント
+  cosmos:       `${B}images/kawakami/astro_event.jpg`,
+  cosmos2:      `${B}images/kawakami/astro_event2.jpg`,
+  cosmos3:      `${B}images/kawakami/astro_event3.jpg`,
+  lettuceField: `${B}images/kawakami/lettuce_field.jpg`,
+  idea:         `${B}images/kawakami/kawakami_idea.jpg`,
+  meeting1:     `${B}images/kawakami/hybrid_meeting.jpg`,
+  meeting2:     `${B}images/kawakami/hybrid_meeting2.jpg`,
+  meeting3:     `${B}images/kawakami/hybrid_meeting3.jpg`,
+  vicemayor:    `${B}images/kawakami/vicemayor_meeting.jpg`,
+  event1:       `${B}images/kawakami/event.jpg`,
+  event2:       `${B}images/kawakami/event2.jpg`,
+  event3:       `${B}images/kawakami/event3.jpg`,
+  dog:          `${B}images/kawakami/dog.jpg`,                // 川上村の犬
+  mascot:       `${B}images/kawakami/mascot.jpg`,             // 村のマスコット
+  nature:       `${B}images/kawakami/nature.jpg`,             // 自然
+  nature2:      `${B}images/kawakami/nature2.jpg`,
+  scenary:      `${B}images/kawakami/scenary.jpg`,            // 風景
+  station:      `${B}images/kawakami/station.jpg`,            // 駅
+  television:   `${B}images/kawakami/television.jpg`,         // TV取材
+  marche:       `${B}images/kawakami/マルシェ川上.jpg`,
+  dokitaiken:   `${B}images/kawakami/土器体験.jpg`,
 };
 
 export const gallery = [
@@ -103,12 +131,12 @@ export const gallery = [
 ];
 
 export const features = [
-  { icon: '💬', title: 'LINEで毎日つながる',    body: 'オープンチャットで村の最新情報・イベント告知を受け取れる。誰でも気軽に参加OK。', image: null },
-  { icon: '📸', title: 'SNSで村のリアル',       body: '月・水・金にInstagram / Threadsを更新。日常や旬の風景をお届け。',             image: null },
-  { icon: '🏕️', title: '現地で体験する',       body: '活動費は全額、村のイベント・体験・宿泊・飲食へ。来るたびに発見がある。',          image: images.event1 },
-  { icon: '🗓️', title: 'イベントを企画する',   body: '川上村に来るイベントをオプチャ内で企画・告知。やりたいを形にできる。',            image: images.event2 },
-  { icon: '🤝', title: '村について考える会議', body: 'ハイブリッド形式で定期開催。村の未来を一緒に考える対話の場。',                  image: images.meeting1 },
-  { icon: '🛸', title: 'コアメンへの一歩',     body: '気が合えばDiscordへ。本気で村を盛り上げる仲間として活動できます。',              image: images.meeting2 },
+  { icon: '💬', title: 'LINEオープンチャットで毎日つながる', body: '村の最新情報・イベント告知をLINEで受け取れます。匿名でも参加できる、気軽なコミュニティです。', image: null },
+  { icon: '📸', title: 'SNSで村のリアルを知る',             body: '月・水・金の週3回、Instagram / Threadsを更新。日常・旬の風景・イベントの様子をお届けします。', image: null },
+  { icon: '🏕️', title: '現地で体験する',                   body: '活動費は全額、村のイベント・体験・宿泊・飲食へ。来るたびに新しい発見があります。',             image: images.event1 },
+  { icon: '🗓️', title: 'イベントを企画する',               body: '川上村で開催するイベントをオープンチャット内で企画・告知できます。やってみたいことを形にできる場です。', image: images.event2 },
+  { icon: '🤝', title: '村について考える会議',             body: 'ハイブリッド形式で定期開催。村の未来を一緒に考える、対話の場を設けています。',                  image: images.meeting1 },
+  { icon: '🛸', title: 'コアメンへの一歩',                 body: '気が合えばDiscordへ。本気で村を盛り上げる仲間として活動できます。',                              image: images.meeting2 },
 ];
 
 export const news = [
@@ -142,9 +170,9 @@ export const news = [
 ];
 
 export const steps = [
-  { n: '01', title: 'LINEオープンチャットに参加',       body: 'まずは入口へ。匿名OK・退出自由なので、気負わず覗いてみてください。' },
-  { n: '02', title: '川上村の情報・イベントを知る',     body: '村のリアルタイムな情報や現地イベント、体験プログラムをキャッチ。気になるものに参加してみる。' },
-  { n: '03', title: '気が合ったらDiscordへ(コアメン)',  body: '「もっと深く関わりたい」と思ったら、コアメンとしてDiscordへ。村を盛り上げる活動が始まります。' },
+  { n: '01', title: 'LINEオープンチャットに参加',       body: 'まずは入口へ。匿名でも参加できて、いつでも退出できます。気負わずに覗いてみてください。' },
+  { n: '02', title: '川上村の情報・イベントを知る',     body: '村のリアルタイムな情報や、現地イベント・体験プログラムが届きます。気になるものから参加してみてください。' },
+  { n: '03', title: '気が合ったらDiscordへ(コアメン)',  body: '「もっと深く関わりたい」と思ったら、コアメンとしてDiscordへ。村を一緒に盛り上げる活動が始まります。' },
 ];
 
 export const faqs = [
