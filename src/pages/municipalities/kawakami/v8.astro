@@ -232,9 +232,12 @@ const villageGallery = [
     <a href={`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}municipalities/kawakami`} class="back-link">← 川上村LP一覧に戻る</a>
 
     <a href={community.lineUrl} class="sticky-line-cta">
-      <span class="sticky-line-free">無料</span>
-      <span class="sticky-line-label">LINEオープンチャットに参加</span>
-      <span class="sticky-line-arrow">▶</span>
+      <span class="sticky-line-mark">LINE</span>
+      <span class="sticky-line-expand">
+        <span class="sticky-line-free">無料</span>
+        <span class="sticky-line-label">オープンチャットに参加</span>
+        <span class="sticky-line-arrow">▶</span>
+      </span>
     </a>
   </div>
 </Base>
@@ -400,9 +403,12 @@ const villageGallery = [
   /* ─── あるやうむロゴ ─── */
   .org-logo { aspect-ratio: 1/1; background-color: #fff; background-size: 78%; background-position: center; background-repeat: no-repeat; border: 2px solid #2a1f15; }
 
-  /* ─── Sticky LINE CTA ─── */
-  .sticky-line-cta { position: fixed; bottom: 22px; right: 22px; display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px 14px 16px; background: #06C755; color: #fff; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.04em; border: 2px solid #2a1f15; box-shadow: 4px 4px 0 #2a1f15; z-index: 1000; transition: transform 0.15s, box-shadow 0.15s; }
-  .sticky-line-cta:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #2a1f15; }
+  /* ─── Sticky LINE CTA（左下・ホバー展開） ─── */
+  .sticky-line-cta { position: fixed; bottom: 22px; left: 22px; display: inline-flex; align-items: center; padding: 14px 18px; background: #06C755; color: #fff; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.04em; border: 2px solid #2a1f15; box-shadow: 4px 4px 0 #2a1f15; z-index: 1000; transition: box-shadow 0.15s ease, transform 0.15s ease; }
+  .sticky-line-cta:hover { box-shadow: 2px 2px 0 #2a1f15; transform: translate(2px, 2px); }
+  .sticky-line-mark { font-size: 0.95rem; font-weight: 700; letter-spacing: 0.16em; }
+  .sticky-line-expand { display: inline-flex; align-items: center; gap: 10px; max-width: 0; opacity: 0; overflow: hidden; white-space: nowrap; margin-left: 0; transition: max-width 0.35s ease, opacity 0.2s ease, margin-left 0.3s ease; }
+  .sticky-line-cta:hover .sticky-line-expand { max-width: 320px; opacity: 1; margin-left: 12px; }
   .sticky-line-free { background: #fff; color: #06C755; padding: 3px 9px; font-size: 0.7rem; letter-spacing: 0.1em; border: 1.5px solid #2a1f15; }
   .sticky-line-arrow { font-size: 0.76rem; }
 
@@ -438,5 +444,6 @@ const villageGallery = [
     .org-card-person { grid-template-columns: 1fr; }
     .org-card-person .org-photo { aspect-ratio: 4/3; max-width: 280px; }
     .sticky-line-cta { left: 12px; right: 12px; bottom: 12px; justify-content: center; padding: 14px 18px; font-size: 0.86rem; }
+    .sticky-line-expand { max-width: none; opacity: 1; margin-left: 12px; }
   }
 </style>
