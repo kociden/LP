@@ -1,17 +1,19 @@
 ---
 import Base from '../layouts/Base.astro';
 
+const B = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
 const drafts = [
-  { n: '01', href: '/v1-wa-modern', title: '和モダン',         desc: '縦書き・墨色・余白の美学。日本の伝統美をベースに、地域の格と奥行きを表現。', tag: '伝統 × 革新',   accent: '#2d2926' },
-  { n: '02', href: '/v2-earth',     title: 'アースカラー',     desc: '土・緑・暖色にテクスチャを重ねた有機的な世界観。地域の温もりを前面に。',     tag: '自然 × 共創',   accent: '#8B6914' },
-  { n: '03', href: '/v3-minimal',   title: 'ミニマル白',       desc: '大胆な余白とタイポグラフィだけで勝負。情報を削ぎ落とした洗練。',               tag: '余白 × 言葉',   accent: '#111' },
-  { n: '04', href: '/v4-dark',      title: 'ダークモード',     desc: 'DAO/Web3の先進性を漆黒の背景で表現。テクノロジーと地域の融合。',               tag: '先端 × 地域',   accent: '#00D4AA' },
-  { n: '05', href: '/v5-editorial', title: '雑誌エディトリアル', desc: '非対称グリッド・大胆な文字組み。読み物としてのLPを目指す。',                   tag: '編集 × 物語',   accent: '#C84B31' },
-  { n: '06', href: '/v6-brutalism', title: 'ネオブルータリズム', desc: '太罫線・原色・ハードシャドウ。AIっぽさの対極、生々しく強いインパクト。',       tag: '粗野 × 鮮烈',   accent: '#FF4500' },
-  { n: '07', href: '/v7-glass',     title: 'グラスモーフィズム', desc: '透過とぼかし、空と山のグラデ。未来的で幻想的なWeb3の気配。',                   tag: '浮遊 × 透明',   accent: '#764ba2' },
-  { n: '08', href: '/v8-showa',     title: '昭和レトロ',       desc: '地方広報誌のような手触り。マスタードと深緑、角ばった装飾、ノスタルジー。',     tag: '郷愁 × 印刷',   accent: '#8b2e1a' },
-  { n: '09', href: '/v9-pop',       title: 'ポップカラフル',   desc: 'ビビッド原色・有機曲線・若年層向けの遊び心。明るくて親しみやすい。',           tag: '遊び × 鮮やか', accent: '#FF6B9D' },
-  { n: '10', href: '/v10-photo',    title: 'フォトジャーナル', desc: '写真主役のドキュメンタリー風。National Geographic的な重みと落ち着き。',        tag: '写真 × 編集',   accent: '#5c7b6d' },
+  { n: '01', href: `${B}v1-wa-modern`, title: '和モダン',         desc: '縦書き・墨色・余白の美学。日本の伝統美をベースに、地域の格と奥行きを表現。', tag: '伝統 × 革新',   accent: '#2d2926' },
+  { n: '02', href: `${B}v2-earth`,     title: 'アースカラー',     desc: '土・緑・暖色にテクスチャを重ねた有機的な世界観。地域の温もりを前面に。',     tag: '自然 × 共創',   accent: '#8B6914' },
+  { n: '03', href: `${B}v3-minimal`,   title: 'ミニマル白',       desc: '大胆な余白とタイポグラフィだけで勝負。情報を削ぎ落とした洗練。',               tag: '余白 × 言葉',   accent: '#111' },
+  { n: '04', href: `${B}v4-dark`,      title: 'ダークモード',     desc: 'DAO/Web3の先進性を漆黒の背景で表現。テクノロジーと地域の融合。',               tag: '先端 × 地域',   accent: '#00D4AA' },
+  { n: '05', href: `${B}v5-editorial`, title: '雑誌エディトリアル', desc: '非対称グリッド・大胆な文字組み。読み物としてのLPを目指す。',                   tag: '編集 × 物語',   accent: '#C84B31' },
+  { n: '06', href: `${B}v6-brutalism`, title: 'ネオブルータリズム', desc: '太罫線・原色・ハードシャドウ。AIっぽさの対極、生々しく強いインパクト。',       tag: '粗野 × 鮮烈',   accent: '#FF4500' },
+  { n: '07', href: `${B}v7-glass`,     title: 'グラスモーフィズム', desc: '透過とぼかし、空と山のグラデ。未来的で幻想的なWeb3の気配。',                   tag: '浮遊 × 透明',   accent: '#764ba2' },
+  { n: '08', href: `${B}v8-showa`,     title: '昭和レトロ',       desc: '地方広報誌のような手触り。マスタードと深緑、角ばった装飾、ノスタルジー。',     tag: '郷愁 × 印刷',   accent: '#8b2e1a' },
+  { n: '09', href: `${B}v9-pop`,       title: 'ポップカラフル',   desc: 'ビビッド原色・有機曲線・若年層向けの遊び心。明るくて親しみやすい。',           tag: '遊び × 鮮やか', accent: '#FF6B9D' },
+  { n: '10', href: `${B}v10-photo`,    title: 'フォトジャーナル', desc: '写真主役のドキュメンタリー風。National Geographic的な重みと落ち着き。',        tag: '写真 × 編集',   accent: '#5c7b6d' },
 ];
 ---
 
@@ -21,7 +23,7 @@ const drafts = [
       <p class="eyebrow">Design Drafts</p>
       <h1>地域おこし協力隊DAO<br /><span>LP デザイン案</span></h1>
       <p class="subtitle">10の方向性を比較できます。選んだ案をベースに、各自治体向けの本番LPに展開していきます。</p>
-      <a href="/municipalities" class="prod-link">
+      <a href={`${B}municipalities`} class="prod-link">
         <span class="prod-label">本番LP</span>
         <span class="prod-text">各自治体に特化したLPを見る →</span>
       </a>

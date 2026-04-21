@@ -25,6 +25,7 @@ pnpm-debug.log*
 
 # claude code local settings
 .claude/
+.mcp.json
 
 # package-lock (regenerated via npm install)
 package-lock.json

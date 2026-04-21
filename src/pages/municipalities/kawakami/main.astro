@@ -1,6 +1,8 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import { community, numbers, concepts, features, news, steps, faqs, images, gallery, profile, organization } from '../../../data/kawakami.ts';
+
+const B = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <Base
@@ -309,8 +311,8 @@ import { community, numbers, concepts, features, news, steps, faqs, images, gall
         </div>
       </div>
       <div class="footer-bottom">
-        <a href="/municipalities/kawakami">← デザイン10案カタログ</a>
-        <a href="/municipalities">自治体一覧</a>
+        <a href={`${B}municipalities/kawakami`}>← デザイン10案カタログ</a>
+        <a href={`${B}municipalities`}>自治体一覧</a>
       </div>
     </footer>
 

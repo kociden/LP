@@ -131,7 +131,7 @@ import { community, numbers, features, news, steps, images, gallery, profile, or
       <span>運営: {community.operator}</span>
     </footer>
 
-    <a href="/municipalities/kawakami" class="back-link">← 川上村LP一覧に戻る</a>
+    <a href={`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}municipalities/kawakami`} class="back-link">← 川上村LP一覧に戻る</a>
   </div>
 </Base>
 

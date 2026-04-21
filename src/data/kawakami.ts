@@ -4,6 +4,8 @@
  * コピー・数字・ニュースなどの差し替えはここを編集すればOK。
  */
 
+const B = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
 export const community = {
   name: 'レタスペビレッジ',
   nameEn: 'LETTUCE-VILLE',
@@ -32,7 +34,7 @@ export const profile = {
   realName: '',                              // 差し替え予定
   role: '川上村 地域おこし協力隊員',
   org: 'レタスペビレッジ運営',
-  photo: '/images/kawakami/cooperation_person_profile.png',
+  photo: `${B}images/kawakami/cooperation_person_profile.png`,
   bio: '川上村の地域おこし協力隊員として、レタスペビレッジの運営を担当。村内外をつなぎ、関係人口を増やす活動を日々発信しています。',
   message: '「ちょっと気になる」くらいで、大丈夫。まずはLINEオープンチャットを覗いてみてください。川上村と、あなたの関わり方を、一緒に探していきましょう。',
   tags: ['関係人口', 'DAOコミュニティ', '川上村', 'レタス・宇宙'],
@@ -82,16 +84,16 @@ export const concepts = [
 // 画像アセット（public/images/kawakami/ 配下）
 // 注：cooperation_person_profile.png は Profile セクション専用。ここには含めない。
 export const images = {
-  hero:      '/images/kawakami/event.jpg',              // ヒーロー用の代表画像（イベント風景）
-  cosmos:    '/images/kawakami/astro_event.jpg',        // 宇宙イベント
-  idea:      '/images/kawakami/kawakami_idea.jpg',      // 村について考える会議
-  meeting1:  '/images/kawakami/hybrid_meeting.jpg',
-  meeting2:  '/images/kawakami/hybrid_meeting2.jpg',
-  meeting3:  '/images/kawakami/hybrid_meeting3.jpg',
-  vicemayor: '/images/kawakami/vicemayor_meeting.jpg',  // 副村長との会議＝プレス系
-  event1:    '/images/kawakami/event.jpg',
-  event2:    '/images/kawakami/event2.jpg',
-  event3:    '/images/kawakami/event3.jpg',
+  hero:      `${B}images/kawakami/event.jpg`,              // ヒーロー用の代表画像（イベント風景）
+  cosmos:    `${B}images/kawakami/astro_event.jpg`,        // 宇宙イベント
+  idea:      `${B}images/kawakami/kawakami_idea.jpg`,      // 村について考える会議
+  meeting1:  `${B}images/kawakami/hybrid_meeting.jpg`,
+  meeting2:  `${B}images/kawakami/hybrid_meeting2.jpg`,
+  meeting3:  `${B}images/kawakami/hybrid_meeting3.jpg`,
+  vicemayor: `${B}images/kawakami/vicemayor_meeting.jpg`,  // 副村長との会議＝プレス系
+  event1:    `${B}images/kawakami/event.jpg`,
+  event2:    `${B}images/kawakami/event2.jpg`,
+  event3:    `${B}images/kawakami/event3.jpg`,
 };
 
 export const gallery = [
@@ -117,7 +119,7 @@ export const news = [
     title: 'LINEオープンチャット参加者が100名を突破しました',
     excerpt: '2025年1月の開設から最短記録での100名到達。村内議員・村外大学生・参加者の自主的な認知活動が拡大の原動力に。',
     href: '#',
-    image: '/images/kawakami/kawakami_idea.jpg',
+    image: `${B}images/kawakami/kawakami_idea.jpg`,
   },
   {
     date: '2026.03.20',
@@ -126,7 +128,7 @@ export const news = [
     title: '春のレタス植え付け体験ツアー(仮)の告知',
     excerpt: '高原野菜のシーズン開幕にあわせて、村内農家との連携イベントを企画中。詳細はオプチャでお知らせします。',
     href: '#',
-    image: '/images/kawakami/event.jpg',
+    image: `${B}images/kawakami/event.jpg`,
   },
   {
     date: '2026.02.10',
@@ -135,7 +137,7 @@ export const news = [
     title: '川上村DAO「レタスペビレッジ」についての記事がPR TIMESに掲載されました',
     excerpt: 'PR TIMESにて「レタスペビレッジ」の取り組みをご紹介いただきました。コミュニティの背景・構想について、外部メディア向けの解説記事です。',
     href: 'https://prtimes.jp/main/html/rd/p/000000289.000091165.html',
-    image: '/images/kawakami/vicemayor_meeting.jpg',
+    image: `${B}images/kawakami/vicemayor_meeting.jpg`,
   },
 ];
 

@@ -1,6 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 
+const B = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
 const villages = [
   {
     slug: 'kawakami',
@@ -30,7 +32,7 @@ const placeholderCount = Math.max(0, 8 - villages.length);
     <ul class="grid">
       {villages.map((v) => (
         <li class="card" style={`--accent: ${v.accent}; --hero: ${v.heroBg};`}>
-          <a href={`/municipalities/${v.slug}`}>
+          <a href={`${B}municipalities/${v.slug}`}>
             <div class="thumb"></div>
             <div class="body">
               <p class="pref">{v.prefecture}</p>
